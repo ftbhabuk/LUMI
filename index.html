@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMI — Live in Style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+
+    <div class="utility-bar">
+        <div class="loc">📍 Worldwide&nbsp; | &nbsp;EN</div>
+        <div class="utility-icons">
+            <a href="Go_to_shopping.html" title="Search">🔍</a>
+            <a href="loggine.html" title="Account" id="account-link">👤 <span class="account-name">Login</span></a>
+            <a href="#" title="Wishlist">♡</a>
+            <a href="Go_to_shopping.html" title="Cart">
+                🛍️ <span class="cart-count">(<span id="cart-count">0</span>)</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="logo-row">
+        <a href="home.html" class="logo" href="home.html" class="logo">LUMI</a>
+    </div>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="Go_to_shopping.html">New In</a></li>
+            <li><a href="Go_to_shopping.html">Women</a></li>
+            <li><a href="Go_to_shopping.html">Men</a></li>
+            <li><a href="Go_to_shopping.html">Bags</a></li>
+            <li><a href="Go_to_shopping.html">Shoes</a></li>
+            <li><a href="Go_to_shopping.html">Accessories</a></li>
+            <li><a href="Go_to_shopping.html">Perfume</a></li>
+            <li><a href="Go_to_shopping.html" class="sale">Sale</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<section class="hero">
+    <img src="PHOTOS/hero.png" alt="LUMI New Collection" class="hero-img">
+    <div class="hero-copy">
+        <div class="eyebrow">Lumi Presents</div>
+        <h1>New Collection</h1>
+        <div class="season">Summer 2026</div>
+        <a href="Go_to_shopping.html" class="btn-outline">Shop Now</a>
+    </div>
+</section>
+
+<section class="feature-tiles">
+    <a class="tile" href="Go_to_shopping.html">
+        <img src="PHOTOS/dress.webp" alt="Women's collection">
+        <div class="tile-label">
+            <br>
+            
+            <h3></h3>
+            <a href="Go_to_shopping.html"></a>
+        </div>
+    </a>
+    <a class="tile" href="Go_to_shopping.html">
+        <img src="PHOTOS/sshoes.webp" alt="Men's collection">
+        <div class="tile-label">
+            <h3></h3>
+            <a href="Go_to_shopping.html"></a>
+        </div>
+    </a>
+    <a class="tile" href="Go_to_shopping.html">
+        <img src="PHOTOS/bag.webp" alt="Bags collection">
+        <div class="tile-label">
+            <h3></h3>
+            <a href="Go_to_shopping.html"></a>
+        </div>
+    </a>
+    <a class="tile" href="Go_to_shopping.html">
+        <img src="PHOTOS/attar.webp" alt="Perfume collection">
+        <div class="tile-label">
+            <h3><br></h3>
+            <a href="Go_to_shopping.html"></a>
+        </div>
+    </a>
+</section>
+
+<section class="section">
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="category-row">
+        <a class="category-item" href="Go_to_shopping.html">
+            <div class="category-photo"><img src="PHOTOS/dress.webp" alt="Dresses"></div>
+            <span>Dresses</span>
+        </a>
+        <a class="category-item" href="Go_to_shopping.html">
+            <div class="category-photo"><img src="PHOTOS/paint.webp" alt="Denim"></div>
+            <span>Denim</span>
+        </a>
+        <a class="category-item" href="Go_to_shopping.html">
+            <div class="category-photo"><img src="PHOTOS/shoes.webp" alt="Heels"></div>
+            <span>Heels</span>
+        </a>
+        <a class="category-item" href="Go_to_shopping.html">
+            <div class="category-photo"><img src="PHOTOS/bag.webp" alt="Bags"></div>
+            <span>Bags</span>
+        </a>
+        <a class="category-item" href="Go_to_shopping.html">
+            <div class="category-photo"><img src="PHOTOS/glasss.webp" alt="Sunglasses"></div>
+            <span>Sunglasses</span>
+        </a>
+        <a class="category-item" href="Go_to_shopping.html">
+            <div class="category-photo"><img src="PHOTOS/belt.webp" alt="Accessories"></div>
+            <span>Accessories</span>
+        </a>
+    </div>
+</section>
+
+<section class="section best-sellers">
+    <div class="best-sellers-head">
+        <h2 class="section-title">Best Sellers</h2>
+        <a href="Go_to_shopping.html" class="view-all">View All →</a>
+    </div>
+    <div class="product-grid">
+
+        <div class="product-card">
+            <div class="product-photo">
+                <img src="PHOTOS/bag.webp" alt="LUMI Tote Bag">
+                <button class="wishlist-btn">♡</button>
+                <button class="add-cart-btn" onclick="quickAdd('LUMI Tote Bag', 189)">Add to Cart</button>
+            </div>
+            <div class="product-info">
+                <div class="name">LUMI Tote Bag</div>
+                <div class="price">$189</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-photo">
+                <img src="PHOTOS/attar.webp" alt="LUMI Eau de Parfum Intense">
+                <button class="wishlist-btn">♡</button>
+                <button class="add-cart-btn" onclick="quickAdd('LUMI Eau de Parfume', 89)">Add to Cart</button>
+            </div>
+            <div class="product-info">
+                <div class="name">LUMI Eau de Parfume</div>
+                <div class="price">$89</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-photo">
+                <img src="PHOTOS/belt.webp" alt="LUMI Leather Belt">
+                <button class="wishlist-btn">♡</button>
+                <button class="add-cart-btn" onclick="quickAdd('LUMI Leather Belt', 65)">Add to Cart</button>
+            </div>
+            <div class="product-info">
+                <div class="name">LUMI Leather Belt</div>
+                <div class="price">$65</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-photo">
+                <img src="PHOTOS/paint.webp" alt="LUMI Denim">
+                <button class="wishlist-btn">♡</button>
+                <button class="add-cart-btn" onclick="quickAdd('LUMI Denim', 98)">Add to Cart</button>
+            </div>
+            <div class="product-info">
+                <div class="name">LUMI Denim</div>
+                <div class="price">$98</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-photo">
+                <img src="PHOTOS/sshoes.webp" alt="LUMI Heels">
+                <button class="wishlist-btn">♡</button>
+                <button class="add-cart-btn" onclick="quickAdd('LUMI Heels', 129)">Add to Cart</button>
+            </div>
+            <div class="product-info">
+                <div class="name">LUMI Heels</div>
+                <div class="price">$129</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-photo">
+                <img src="PHOTOS/glasss.webp" alt="LUMI Sunglasses">
+                <button class="wishlist-btn">♡</button>
+                <button class="add-cart-btn" onclick="quickAdd('LUMI Sunglasses', 79)">Add to Cart</button>
+            </div>
+            <div class="product-info">
+                <div class="name">LUMI Sunglasses</div>
+                <div class="price">$79</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-photo">
+                <img src="PHOTOS/watch.webp" alt="LUMI Watch">
+                <button class="wishlist-btn">♡</button>
+                <button class="add-cart-btn" onclick="quickAdd('LUMI Watch', 199)">Add to Cart</button>
+            </div>
+            <div class="product-info">
+                <div class="name">LUMI Watch</div>
+                <div class="price">$199</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="trust-bar">
+    <div class="trust-item">
+        <div class="icon">🚚</div>
+        <div>
+            <div class="t-title">Free Shipping</div>
+            <div class="t-sub">On all orders over $75</div>
+        </div>
+    </div>
+    <div class="trust-item">
+        <div class="icon">↺</div>
+        <div>
+            <div class="t-title">Easy Returns</div>
+            <div class="t-sub">30 days return policy</div>
+        </div>
+    </div>
+    <div class="trust-item">
+        <div class="icon">🔒</div>
+        <div>
+            <div class="t-title">Secure Payment</div>
+            <div class="t-sub">100% secure checkout</div>
+        </div>
+    </div>
+    <div class="trust-item">
+        <div class="icon">🎧</div>
+        <div>
+            <div class="t-title">Customer Care</div>
+            <div class="t-sub">We're here to help</div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="logo">LUMI</div>
+            <div class="tagline">Live in Style</div>
+            <p>Modern fashion and lifestyle essentials — designed for a generation that refuses to compromise on quality or style.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Shop</h4>
+            <ul>
+                <li><a href="Go_to_shopping.html">Women</a></li>
+                <li><a href="Go_to_shopping.html">Men</a></li>
+                <li><a href="Go_to_shopping.html">Bags</a></li>
+                <li><a href="Go_to_shopping.html">Perfume</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">About Lumi</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Help</h4>
+            <ul>
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Track Order</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <h4>Stay in the Loop</h4>
+            <p>Sign up for early access to new drops and members-only offers.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="button">Join</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 LUMI. All rights reserved.</div>
+        <div class="socials">
+            <a href="#">IG</a>
+            <a href="#">TT</a>
+            <a href="#">FB</a>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMI — Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="logo-row">
+        <a href="home.html" class="logo">LUMI</a>
+    </div>
+</header>
+
+<section class="login-page">
+    <div class="login-box">
+        <div class="eyebrow">Welcome to Lumi</div>
+        <h2>Login / Register</h2>
+        <p class="sub" id="login-context">Sign in to shop and check out.</p>
+
+        <form id="login-form">
+            <input type="text" id="f-name" placeholder="Full Name" required>
+
+            <input type="text" id="f-address" placeholder="Shipping Address" required>
+
+            <div class="field-row">
+                <input type="text" id="f-postal" placeholder="Postal Code" required>
+                <select id="f-gender" required>
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <input type="tel" id="f-phone" placeholder="Phone Number" required>
+            <input type="email" id="f-email" placeholder="Email Address" required>
+            <input type="password" id="f-password" placeholder="Password" required>
+
+            <button type="submit">Login / Register</button>
+        </form>
+
+        <p class="login-note">By continuing you agree to LUMI's Terms of Service and Privacy Policy.</p>
+    </div>
+</section>
+
+<script src="script.js"></script>
+<script>
+    // Show shoppers why they've landed here, and where they'll return to.
+    (function () {
+        const params = new URLSearchParams(window.location.search);
+        const redirect = params.get('redirect');
+        if (redirect) {
+            document.getElementById('login-context').textContent =
+                'Please log in to continue — you\'ll be sent right back to shopping.';
+        }
+    })();
+
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const user = {
+            name: document.getElementById('f-name').value.trim(),
+            address: document.getElementById('f-address').value.trim(),
+            postalCode: document.getElementById('f-postal').value.trim(),
+            gender: document.getElementById('f-gender').value,
+            phone: document.getElementById('f-phone').value.trim(),
+            email: document.getElementById('f-email').value.trim()
+            // Note: for a real store, never store passwords client-side.
+            // This is a school-project prototype with no real backend.
+        };
+
+        localStorage.setItem('lumiUser', JSON.stringify(user));
+        localStorage.setItem('lumiLoggedIn', 'true');
+
+        const params = new URLSearchParams(window.location.search);
+        const redirect = params.get('redirect');
+        window.location.href = redirect ? redirect : 'home.html';
+    });
+</script>
+
+</body>
+</html>
