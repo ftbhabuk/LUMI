@@ -6,7 +6,7 @@
 <title>LUMI — Live in Style</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -42,7 +42,7 @@
 <section class="hero">
     <img src="PHOTOS/hero.png" alt="LUMI New Collection" class="hero-img">
     <div class="hero-copy">
-        <div class="eyebrow">Lumi Presents</div>
+        <div class="eyebrow"><span class="brand-cursive">Lumi</span> Presents</div>
         <div class="gold-line"></div>
         <h1>New Collection</h1>
         <div class="season">Summer 2026</div>
@@ -55,135 +55,158 @@
         <button class="tab-btn tab-active" data-tab="new-arrivals">New Arrivals</button>
         <button class="tab-btn" data-tab="best-sellers">Best Sellers</button>
     </div>
-    <div class="tab-grid">
+    <div class="tab-scroll-wrap">
+        <button class="tab-scroll-arrow tab-scroll-arrow-left" id="tab-scroll-left">&#10094;</button>
+        <button class="tab-scroll-arrow tab-scroll-arrow-right" id="tab-scroll-right">&#10095;</button>
+        <div class="tab-grid" id="tab-grid">
 
-        <div class="product-card" data-tab-group="new-arrivals">
-            <div class="product-photo">
-                <img src="PHOTOS/l_dress.jpg" alt="LUMI Midi Dress">
-                <button class="wishlist-btn" data-product="LUMI Midi Dress">&#9825;</button>
-                <button class="add-cart-btn" onclick="quickAdd('LUMI Midi Dress', 159)">Add to Cart</button>
+            <div class="product-card" data-tab-group="new-arrivals">
+                <div class="product-photo">
+                    <img src="PHOTOS/l_dress.jpg" alt="LUMI Midi Dress">
+                    <button class="wishlist-btn" data-product="LUMI Midi Dress">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Midi Dress</div>
+                    <span class="wishlist-icon" data-product="LUMI Midi Dress">&#9825;</span>
+                </div>
             </div>
-            <div class="product-info">
-                <div class="name">LUMI Midi Dress</div>
-                <div class="price">$159</div>
+
+            <div class="product-card" data-tab-group="new-arrivals">
+                <div class="product-photo">
+                    <img src="PHOTOS/shoes.webp" alt="LUMI Penny Loafers">
+                    <button class="wishlist-btn" data-product="LUMI Penny Loafers">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Penny Loafers</div>
+                    <span class="wishlist-icon" data-product="LUMI Penny Loafers">&#9825;</span>
+                </div>
             </div>
+
+            <div class="product-card" data-tab-group="new-arrivals">
+                <div class="product-photo">
+                    <img src="PHOTOS/jwelery.jpg" alt="LUMI Jewelry">
+                    <button class="wishlist-btn" data-product="LUMI Jewelry">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Jewelry</div>
+                    <span class="wishlist-icon" data-product="LUMI Jewelry">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-tab-group="new-arrivals">
+                <div class="product-photo">
+                    <img src="PHOTOS/perfume.webp" alt="LUMI Pour Homme">
+                    <button class="wishlist-btn" data-product="LUMI Pour Homme">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Pour Homme</div>
+                    <span class="wishlist-icon" data-product="LUMI Pour Homme">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-tab-group="new-arrivals">
+                <div class="product-photo">
+                    <img src="PHOTOS/attar.webp" alt="LUMI Intense EDP">
+                    <button class="wishlist-btn" data-product="LUMI Intense EDP">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Intense EDP</div>
+                    <span class="wishlist-icon" data-product="LUMI Intense EDP">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-tab-group="new-arrivals">
+                <div class="product-photo">
+                    <img src="PHOTOS/watch.webp" alt="LUMI Watch">
+                    <button class="wishlist-btn" data-product="LUMI Watch">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Watch</div>
+                    <span class="wishlist-icon" data-product="LUMI Watch">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-tab-group="best-sellers">
+                <div class="product-photo">
+                    <img src="PHOTOS/bag.webp" alt="LUMI Tote Bag">
+                    <button class="wishlist-btn" data-product="LUMI Tote Bag">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Tote Bag</div>
+                    <span class="wishlist-icon" data-product="LUMI Tote Bag">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-tab-group="best-sellers">
+                <div class="product-photo">
+                    <img src="PHOTOS/attar.webp" alt="LUMI Eau de Parfum">
+                    <button class="wishlist-btn" data-product="LUMI Eau de Parfum">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Eau de Parfum</div>
+                    <span class="wishlist-icon" data-product="LUMI Eau de Parfum">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-tab-group="best-sellers">
+                <div class="product-photo">
+                    <img src="PHOTOS/belt.webp" alt="LUMI Leather Belt">
+                    <button class="wishlist-btn" data-product="LUMI Leather Belt">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Leather Belt</div>
+                    <span class="wishlist-icon" data-product="LUMI Leather Belt">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-tab-group="best-sellers">
+                <div class="product-photo">
+                    <img src="PHOTOS/paint.webp" alt="LUMI Denim">
+                    <button class="wishlist-btn" data-product="LUMI Denim">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Denim</div>
+                    <span class="wishlist-icon" data-product="LUMI Denim">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-tab-group="best-sellers">
+                <div class="product-photo">
+                    <img src="PHOTOS/sshoes.webp" alt="LUMI Heels">
+                    <button class="wishlist-btn" data-product="LUMI Heels">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Heels</div>
+                    <span class="wishlist-icon" data-product="LUMI Heels">&#9825;</span>
+                </div>
+            </div>
+
+            <div class="product-card" data-tab-group="best-sellers">
+                <div class="product-photo">
+                    <img src="PHOTOS/glasss.webp" alt="LUMI Sunglasses">
+                    <button class="wishlist-btn" data-product="LUMI Sunglasses">&#9825;</button>
+                </div>
+                <div class="product-info">
+                    <div class="name">LUMI Sunglasses</div>
+                    <span class="wishlist-icon" data-product="LUMI Sunglasses">&#9825;</span>
+                </div>
+            </div>
+
         </div>
-
-        <div class="product-card" data-tab-group="new-arrivals">
-            <div class="product-photo">
-                <img src="PHOTOS/shoes.webp" alt="LUMI Penny Loafers">
-                <button class="wishlist-btn" data-product="LUMI Penny Loafers">&#9825;</button>
-                <button class="add-cart-btn" onclick="quickAdd('LUMI Penny Loafers', 139)">Add to Cart</button>
-            </div>
-            <div class="product-info">
-                <div class="name">LUMI Penny Loafers</div>
-                <div class="price">$139</div>
-            </div>
-        </div>
-
-        <div class="product-card" data-tab-group="new-arrivals">
-            <div class="product-photo">
-                <img src="PHOTOS/jwelery.jpg" alt="LUMI Jewelry">
-                <button class="wishlist-btn" data-product="LUMI Jewelry">&#9825;</button>
-                <button class="add-cart-btn" onclick="quickAdd('LUMI Jewelry', 79)">Add to Cart</button>
-            </div>
-            <div class="product-info">
-                <div class="name">LUMI Jewelry</div>
-                <div class="price">$79</div>
-            </div>
-        </div>
-
-        <div class="product-card" data-tab-group="new-arrivals">
-            <div class="product-photo">
-                <img src="PHOTOS/perfume.webp" alt="LUMI Pour Homme">
-                <button class="wishlist-btn" data-product="LUMI Pour Homme">&#9825;</button>
-                <button class="add-cart-btn" onclick="quickAdd('LUMI Pour Homme', 89)">Add to Cart</button>
-            </div>
-            <div class="product-info">
-                <div class="name">LUMI Pour Homme</div>
-                <div class="price">$89</div>
-            </div>
-        </div>
-
-        <div class="product-card" data-tab-group="best-sellers">
-            <div class="product-photo">
-                <img src="PHOTOS/bag.webp" alt="LUMI Tote Bag">
-                <button class="wishlist-btn" data-product="LUMI Tote Bag">&#9825;</button>
-                <button class="add-cart-btn" onclick="quickAdd('LUMI Tote Bag', 189)">Add to Cart</button>
-            </div>
-            <div class="product-info">
-                <div class="name">LUMI Tote Bag</div>
-                <div class="price">$189</div>
-            </div>
-        </div>
-
-        <div class="product-card" data-tab-group="best-sellers">
-            <div class="product-photo">
-                <img src="PHOTOS/attar.webp" alt="LUMI Eau de Parfum">
-                <button class="wishlist-btn" data-product="LUMI Eau de Parfum">&#9825;</button>
-                <button class="add-cart-btn" onclick="quickAdd('LUMI Eau de Parfum', 89)">Add to Cart</button>
-            </div>
-            <div class="product-info">
-                <div class="name">LUMI Eau de Parfum</div>
-                <div class="price">$89</div>
-            </div>
-        </div>
-
-        <div class="product-card" data-tab-group="best-sellers">
-            <div class="product-photo">
-                <img src="PHOTOS/belt.webp" alt="LUMI Leather Belt">
-                <button class="wishlist-btn" data-product="LUMI Leather Belt">&#9825;</button>
-                <button class="add-cart-btn" onclick="quickAdd('LUMI Leather Belt', 65)">Add to Cart</button>
-            </div>
-            <div class="product-info">
-                <div class="name">LUMI Leather Belt</div>
-                <div class="price">$65</div>
-            </div>
-        </div>
-
-        <div class="product-card" data-tab-group="best-sellers">
-            <div class="product-photo">
-                <img src="PHOTOS/paint.webp" alt="LUMI Denim">
-                <button class="wishlist-btn" data-product="LUMI Denim">&#9825;</button>
-                <button class="add-cart-btn" onclick="quickAdd('LUMI Denim', 98)">Add to Cart</button>
-            </div>
-            <div class="product-info">
-                <div class="name">LUMI Denim</div>
-                <div class="price">$98</div>
-            </div>
-        </div>
-
     </div>
 </section>
 
-<section class="section reveal">
-    <h2 class="section-title">Shop by Category</h2>
+<section class="quote-section reveal">
+    <div class="quote-text">&ldquo;Fashion is the armor to survive the reality of everyday life.&rdquo;</div>
+    <div class="quote-attribution">&mdash; Bill Cunningham</div>
     <div class="gold-line"></div>
-    <div class="category-row">
-        <a class="category-item" href="Go_to_shopping.html">
-            <div class="category-photo"><img src="PHOTOS/dress.webp" alt="Dresses"></div>
-            <span>Dresses</span>
-        </a>
-        <a class="category-item" href="Go_to_shopping.html">
-            <div class="category-photo"><img src="PHOTOS/paint.webp" alt="Denim"></div>
-            <span>Denim</span>
-        </a>
-        <a class="category-item" href="Go_to_shopping.html">
-            <div class="category-photo"><img src="PHOTOS/shoes.webp" alt="Heels"></div>
-            <span>Heels</span>
-        </a>
-        <a class="category-item" href="Go_to_shopping.html">
-            <div class="category-photo"><img src="PHOTOS/bag.webp" alt="Bags"></div>
-            <span>Bags</span>
-        </a>
-        <a class="category-item" href="Go_to_shopping.html">
-            <div class="category-photo"><img src="PHOTOS/glasss.webp" alt="Sunglasses"></div>
-            <span>Sunglasses</span>
-        </a>
-        <a class="category-item" href="Go_to_shopping.html">
-            <div class="category-photo"><img src="PHOTOS/belt.webp" alt="Accessories"></div>
-            <span>Accessories</span>
-        </a>
+    <div class="quote-categories">
+        <a href="Go_to_shopping.html">Dresses</a>
+        <a href="Go_to_shopping.html">Denim</a>
+        <a href="Go_to_shopping.html">Heels</a>
+        <a href="Go_to_shopping.html">Bags</a>
+        <a href="Go_to_shopping.html">Sunglasses</a>
+        <a href="Go_to_shopping.html">Accessories</a>
     </div>
 </section>
 
@@ -295,31 +318,6 @@
         { name: 'LUMI Pour Homme', price: 89 },
         { name: 'LUMI Intense EDP', price: 95 }
     ]);
-
-    document.addEventListener('DOMContentLoaded', function () {
-        var tabBtns = document.querySelectorAll('.tab-btn');
-        var allCards = document.querySelectorAll('.tab-grid .product-card');
-
-        for (var i = 0; i < tabBtns.length; i++) {
-            tabBtns[i].addEventListener('click', function () {
-                var tab = this.getAttribute('data-tab');
-
-                for (var j = 0; j < tabBtns.length; j++) {
-                    tabBtns[j].classList.remove('tab-active');
-                }
-                this.classList.add('tab-active');
-
-                for (var k = 0; k < allCards.length; k++) {
-                    var cardTab = allCards[k].getAttribute('data-tab-group');
-                    if (cardTab === tab) {
-                        allCards[k].style.display = '';
-                    } else {
-                        allCards[k].style.display = 'none';
-                    }
-                }
-            });
-        }
-    });
 </script>
 </body>
 </html>
