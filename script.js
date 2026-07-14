@@ -365,7 +365,22 @@ var LUMI = (function () {
         this.classList.add('tab-active');
 
         for (var k = 0; k < allCards.length; k++) {
-          allCards[k].style.display = (allCards[k].getAttribute('data-tab-group') === tab) ? '' : 'none';
+          var match = allCards[k].getAttribute('data-tab-group') === tab;
+          if (match) {
+            allCards[k].style.display = '';
+            allCards[k].style.opacity = '0';
+            allCards[k].style.transform = 'translateY(8px)';
+            (function (card) {
+              requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                  card.style.opacity = '1';
+                  card.style.transform = 'translateY(0)';
+                });
+              });
+            })(allCards[k]);
+          } else {
+            allCards[k].style.display = 'none';
+          }
         }
       });
     }
@@ -385,6 +400,20 @@ var LUMI = (function () {
     });
   }
 
+  function initShowcaseArrows() {
+    var leftBtn = document.getElementById('showcase-scroll-left');
+    var rightBtn = document.getElementById('showcase-scroll-right');
+    var wrap = document.getElementById('showcase-products');
+    if (!leftBtn || !rightBtn || !wrap) return;
+
+    leftBtn.addEventListener('click', function () {
+      wrap.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+    rightBtn.addEventListener('click', function () {
+      wrap.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     renderCartCount();
     renderAccountState();
@@ -395,6 +424,7 @@ var LUMI = (function () {
     initReveal();
     initTabs();
     initScrollArrows();
+    initShowcaseArrows();
 
     if (sessionStorage.getItem('lumiJustLoggedIn')) {
       sessionStorage.removeItem('lumiJustLoggedIn');
