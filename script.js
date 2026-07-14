@@ -161,6 +161,7 @@ var LUMI = (function () {
     var input = document.getElementById('search-input');
     var results = document.getElementById('search-results');
     var navSearch = document.getElementById('nav-search-input');
+    var mobileSearch = document.getElementById('mobile-search-input');
     if (!overlay) return;
 
     if (openBtn) {
@@ -173,6 +174,13 @@ var LUMI = (function () {
       navSearch.addEventListener('focus', function (e) {
         e.target.blur();
         openSearchOverlay();
+      });
+    }
+    if (mobileSearch) {
+      mobileSearch.addEventListener('focus', function (e) {
+        e.target.blur();
+        openSearchOverlay();
+        document.body.classList.remove('mobile-menu-open');
       });
     }
     if (closeBtn) {
@@ -447,6 +455,25 @@ var LUMI = (function () {
   window.quickAdd = quickAdd;
   window.showToast = showToast;
   window.LUMI = LUMI;
+
+  /* ---------- Mobile menu toggle ---------- */
+  function initMobileMenu() {
+    var toggle = document.getElementById('nav-toggle');
+    var close = document.getElementById('mobile-close');
+    var menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+    function openMenu() { document.body.classList.add('mobile-menu-open'); }
+    function closeMenu() { document.body.classList.remove('mobile-menu-open'); }
+    toggle.addEventListener('click', openMenu);
+    if (close) close.addEventListener('click', closeMenu);
+    menu.addEventListener('click', function (e) {
+      if (e.target === menu) closeMenu();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  }
+  initMobileMenu();
 
   return {
     getUser: getUser,
