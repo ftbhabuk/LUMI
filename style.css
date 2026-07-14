@@ -451,6 +451,8 @@ button{ font-family:inherit; cursor:pointer; }
 /* scroll arrows */
 .tab-scroll-wrap{
     position:relative;
+    max-width:1200px;
+    margin:0 auto;
 }
 .tab-scroll-arrow{
     position:absolute;
@@ -501,7 +503,7 @@ button{ font-family:inherit; cursor:pointer; }
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:24px;
-    max-width:1000px;
+    max-width:1200px;
     margin:0 auto;
 }
 .category-tile{
@@ -590,6 +592,8 @@ button{ font-family:inherit; cursor:pointer; }
 }
 .reviews-scroll-wrap{
     position:relative;
+    max-width:1200px;
+    margin:0 auto;
 }
 .reviews-scroll{
     display:flex;
@@ -653,7 +657,7 @@ button{ font-family:inherit; cursor:pointer; }
     justify-content:space-between;
     align-items:baseline;
     margin-bottom:36px;
-    max-width:1400px;
+    max-width:1200px;
     margin-left:auto;
     margin-right:auto;
 }
@@ -678,7 +682,7 @@ button{ font-family:inherit; cursor:pointer; }
     display:grid;
     grid-template-columns:repeat(7, 1fr);
     gap:20px;
-    max-width:1400px;
+    max-width:1200px;
     margin:0 auto;
 }
 
@@ -779,6 +783,8 @@ button{ font-family:inherit; cursor:pointer; }
 .trust-bar{
     display:grid;
     grid-template-columns:repeat(4, 1fr);
+    max-width:1200px;
+    margin:0 auto;
     border-top:1px solid var(--border);
     border-bottom:1px solid var(--border);
     background: var(--bg-section);
