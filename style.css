@@ -565,7 +565,7 @@ button{ font-family:inherit; cursor:pointer; }
     text-decoration:none;
 }
 .category-tile:hover{
-    transform:translateY(-3px);
+    transform:translateY(0);
 }
 .category-tile .cat-image{
     width:100%;
@@ -594,6 +594,9 @@ button{ font-family:inherit; cursor:pointer; }
     text-transform:uppercase;
     color: var(--text);
     font-weight:700;
+    text-decoration:underline;
+    text-underline-offset:4px;
+    text-decoration-color: var(--gold);
     transition:color 0.3s;
 }
 .category-tile:hover .cat-label{
