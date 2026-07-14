@@ -33,6 +33,30 @@ ul{ list-style:none; }
 img{ display:block; max-width:100%; }
 button{ font-family:inherit; cursor:pointer; }
 
+/* ---------- Utility Bar ---------- */
+.utility-bar{
+    background: var(--dark);
+    border-bottom:1px solid var(--border);
+    padding:0 48px;
+}
+.utility-bar-inner{
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    height:32px;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--text-muted);
+}
+.utility-dot{
+    color: var(--gold);
+    font-size:8px;
+}
+
 /* ---------- Animations ---------- */
 @keyframes fadeIn{
     from{ opacity:0; }
@@ -549,28 +573,192 @@ button{ font-family:inherit; cursor:pointer; }
     color: var(--gold);
 }
 
-/* ---------- Quote / luxury category ---------- */
-.quote-section{
+/* ---------- Content Carousel ---------- */
+.content-carousel{
     padding:80px 48px;
-    text-align:center;
+    background: var(--bg-section);
 }
-.quote-text{
-    font-family: var(--font-cursive);
-    font-style:italic;
-    font-weight:500;
-    font-size:28px;
-    line-height:1.5;
-    color: var(--gold);
-    max-width:700px;
-    margin:0 auto 10px;
-    letter-spacing:0.5px;
+.content-carousel-inner{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
 }
-.quote-attribution{
-    font-size:11px;
+.content-image{
+    width:100%;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    border:1px solid var(--border);
+}
+.content-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.6s ease;
+}
+.content-image:hover img{
+    transform:scale(1.04);
+}
+.content-text{
+    max-width:460px;
+}
+.content-overline{
+    display:block;
+    font-size:10px;
     letter-spacing:3px;
     text-transform:uppercase;
+    color: var(--gold);
+    margin-bottom:12px;
+}
+.content-heading{
+    font-family: var(--font-display);
+    font-size:34px;
+    font-weight:600;
+    line-height:1.25;
+    margin-bottom:20px;
+    color: var(--text);
+}
+.content-body{
+    font-size:14px;
+    line-height:1.8;
+    color: var(--text-soft);
+    margin-bottom:28px;
+}
+
+/* ---------- Blog Section ---------- */
+.blog-section{
+    padding:70px 48px;
+    background: var(--surface);
+}
+.blog-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    max-width:1200px;
+    margin:0 auto 32px;
+}
+.blog-head .section-title{
+    margin-bottom:0;
+    text-align:left;
+}
+.blog-scroll{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    padding:4px 0 16px;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    max-width:1200px;
+    margin:0 auto;
+}
+.blog-scroll::-webkit-scrollbar{ display:none; }
+.blog-card{
+    flex:0 0 auto;
+    width:300px;
+}
+.blog-image{
+    width:100%;
+    aspect-ratio:4/3;
+    overflow:hidden;
+    border:1px solid var(--border);
+    margin-bottom:14px;
+}
+.blog-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.6s ease;
+}
+.blog-card:hover .blog-image img{
+    transform:scale(1.06);
+}
+.blog-meta{
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
     color: var(--text-muted);
-    margin-bottom:40px;
+    margin-bottom:6px;
+}
+.blog-title{
+    font-family: var(--font-display);
+    font-size:18px;
+    font-weight:600;
+    line-height:1.3;
+    margin-bottom:8px;
+    color: var(--text);
+    transition:color 0.2s;
+}
+.blog-card:hover .blog-title{
+    color: var(--gold);
+}
+.blog-excerpt{
+    font-size:13px;
+    line-height:1.6;
+    color: var(--text-soft);
+}
+
+/* ---------- Q&A Section ---------- */
+.qa-section{
+    padding:70px 48px 80px;
+    background: var(--bg-section);
+    text-align:center;
+}
+.qa-section .section-title{
+    margin-bottom:4px;
+}
+.qa-list{
+    max-width:700px;
+    margin:32px auto 0;
+    text-align:left;
+}
+.qa-item{
+    border-bottom:1px solid var(--border);
+    padding:0;
+}
+.qa-question{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    background:none;
+    border:none;
+    padding:20px 0;
+    font-size:14px;
+    letter-spacing:0.5px;
+    color: var(--text);
+    text-align:left;
+    cursor:pointer;
+    transition:color 0.2s;
+    font-family:inherit;
+}
+.qa-question:hover{
+    color: var(--gold);
+}
+.qa-icon{
+    font-size:20px;
+    color: var(--gold);
+    transition:transform 0.3s;
+    flex-shrink:0;
+    margin-left:12px;
+}
+.qa-item.active .qa-icon{
+    transform:rotate(45deg);
+}
+.qa-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.35s ease, padding 0.35s ease;
+    font-size:13px;
+    line-height:1.7;
+    color: var(--text-soft);
+    padding:0;
+}
+.qa-item.active .qa-answer{
+    max-height:200px;
+    padding:0 0 20px;
 }
 
 /* ---------- Reviews ---------- */
@@ -942,7 +1130,8 @@ footer{
 @media (max-width: 980px){
     .tab-grid .product-card{ width:200px; }
     .tab-scroll-arrow{ display:none; }
-    .quote-text{ font-size:22px; }
+    .content-carousel-inner{ gap:36px; }
+    .content-heading{ font-size:28px; }
     .category-tiles-grid{ grid-template-columns:repeat(3,1fr); gap:16px; }
     .category-tiles{ padding:40px 24px 50px; }
     .product-grid{ grid-template-columns:repeat(3, 1fr); row-gap:34px; }
@@ -993,8 +1182,16 @@ footer{
     .tab-bar{ gap:2px; margin-bottom:24px; }
     .tab-btn{ padding:8px 18px; font-size:10px; }
 
-    .quote-section{ padding:46px 16px; }
-    .quote-text{ font-size:20px; }
+    .quote-section{ padding:46px 16px; .quote-text{ font-size:20px; } }
+    .content-carousel{ padding:50px 16px; }
+    .content-carousel-inner{ grid-template-columns:1fr; gap:32px; }
+    .content-image{ aspect-ratio:4/3; }
+    .content-text{ max-width:100%; }
+    .content-heading{ font-size:26px; }
+    .blog-section{ padding:46px 16px; }
+    .blog-card{ width:260px; }
+    .qa-section{ padding:46px 16px 56px; }
+    .qa-list{ max-width:100%; }
     .category-tiles{ padding:30px 16px 36px; }
     .category-tiles-grid{ grid-template-columns:1fr; gap:16px; max-width:360px; margin:0 auto; }
     .category-tile .cat-image{ aspect-ratio:4/3; }

@@ -400,6 +400,23 @@ var LUMI = (function () {
     });
   }
 
+  function initQA() {
+    var items = document.querySelectorAll('.qa-item');
+    for (var i = 0; i < items.length; i++) {
+      var btn = items[i].querySelector('.qa-question');
+      btn.addEventListener('click', function () {
+        var parent = this.parentNode;
+        var isActive = parent.classList.contains('active');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('active');
+        }
+        if (!isActive) {
+          parent.classList.add('active');
+        }
+      });
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     renderCartCount();
     renderAccountState();
@@ -410,6 +427,7 @@ var LUMI = (function () {
     initReveal();
     initTabs();
     initScrollArrows();
+    initQA();
 
     if (sessionStorage.getItem('lumiJustLoggedIn')) {
       sessionStorage.removeItem('lumiJustLoggedIn');
