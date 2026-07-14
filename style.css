@@ -382,6 +382,20 @@ button{ font-family:inherit; cursor:pointer; }
     border-color: var(--gold);
     font-weight:700;
 }
+.tab-shop-link{
+    text-align:center;
+    margin:-24px 0 28px;
+}
+.tab-shop-link a{
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color: var(--text-muted);
+    transition:color 0.2s;
+}
+.tab-shop-link a:hover{
+    color: var(--gold);
+}
 .tab-grid{
     display:flex;
     gap:16px;

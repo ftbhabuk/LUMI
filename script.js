@@ -349,9 +349,16 @@ var LUMI = (function () {
   function initTabs() {
     var tabBtns = document.querySelectorAll('.tab-btn');
     var allCards = document.querySelectorAll('.tab-grid .product-card');
+    var shopLink = document.querySelector('.tab-shop-link a');
     if (!tabBtns.length) return;
 
     var activeTab = 'new-arrivals';
+
+    function updateShopLink(tab) {
+      if (!shopLink) return;
+      var label = tab === 'new-arrivals' ? 'New Arrivals' : 'Best Sellers';
+      shopLink.textContent = 'Shop ' + label + ' \u2192';
+    }
 
     for (var i = 0; i < tabBtns.length; i++) {
       tabBtns[i].addEventListener('click', function () {
@@ -363,6 +370,7 @@ var LUMI = (function () {
           tabBtns[j].classList.remove('tab-active');
         }
         this.classList.add('tab-active');
+        updateShopLink(tab);
 
         for (var k = 0; k < allCards.length; k++) {
           var match = allCards[k].getAttribute('data-tab-group') === tab;
