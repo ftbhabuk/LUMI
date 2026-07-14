@@ -1414,11 +1414,12 @@ footer{
     .section-title{ margin-bottom:30px; }
     .category-row{ grid-template-columns:repeat(2, 1fr); gap:18px; }
     .product-grid,
-    .catalog-grid{ gap:14px 10px; }
+    .catalog-grid{ grid-template-columns:repeat(2, 1fr); gap:12px 8px; }
 
-    .product-info{ padding-top:10px; }
+    .product-info{ padding-top:8px; }
     .product-info .name,
     .product-info .price{ font-size:12px; }
+    .product-info .type{ font-size:10px; }
 
     .wishlist-btn,
     .bookmark-btn{
@@ -1453,17 +1454,17 @@ footer{
 
     footer{ padding:46px 20px 20px; }
     .footer-grid{ grid-template-columns:1fr; gap:28px; padding-bottom:32px; }
-    .footer-col ul{ display:flex; flex-wrap:wrap; gap:10px 18px; }
+    .footer-col ul{ display:flex; flex-direction:column; gap:8px; }
     .footer-col ul li{ margin-bottom:0; }
     .newsletter-form{ width:100%; }
     .newsletter-form input{ min-width:0; }
-    .footer-bottom{ align-items:flex-start; flex-direction:column; }
+    .footer-bottom{ align-items:flex-start; flex-direction:column; gap:12px; }
     .footer-brand .logo img{ height:28px; }
     .footer-brand .tagline{ font-size:10px; letter-spacing:2px; margin-bottom:14px; }
     .footer-brand p{ font-size:12px; max-width:100%; }
-    .footer-col h4{ font-size:10px; }
-    .footer-col ul li a{ font-size:12px; }
-    .footer-newsletter h4{ font-size:10px; }
+    .footer-col h4{ font-size:11px; letter-spacing:2px; margin-bottom:8px; }
+    .footer-col ul li a{ font-size:13px; }
+    .footer-newsletter h4{ font-size:11px; letter-spacing:2px; margin-bottom:8px; }
     .footer-newsletter p{ font-size:12px; }
 
     #lumi-toast{
@@ -1484,8 +1485,7 @@ footer{
     .checkout-summary,
     .checkout-form{ padding:24px 20px; }
 
-    .filter-bar{ padding:20px 16px 0; gap:8px; overflow-x:auto; flex-wrap:nowrap; }
-    .filter-btn{ flex:0 0 auto; padding:6px 16px; font-size:10px; }
+    .filter-bar{ display:none; }
 
     .utility-bar{ padding:0 16px; }
     .utility-bar-inner{ gap:4px; font-size:9px; letter-spacing:1px; height:28px; }
