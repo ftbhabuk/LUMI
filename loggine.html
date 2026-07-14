@@ -102,6 +102,13 @@
 .login-box input::placeholder{
     color: var(--text-muted);
 }
+.inline-logo{
+    display:inline;
+    height:28px;
+    width:auto;
+    vertical-align:middle;
+    margin-bottom:2px;
+}
 .login-box .btn-primary{
     margin-top:6px;
     padding:14px;
@@ -171,7 +178,14 @@
     display:flex;
 }
 @media (max-width: 560px){
-    .login-box{ padding:32px 20px; }
+    .login-box{ padding:28px 16px; }
+    .login-tab{ font-size:10px; padding:10px 0; }
+    .login-box h2{ font-size:22px; }
+    .login-box .sub{ font-size:11px; margin-bottom:18px; }
+    .login-box input{ padding:11px 12px; font-size:12px; }
+    .login-box .btn-primary{ padding:12px; font-size:10px; }
+    .btn-google{ padding:10px; font-size:11px; }
+    .login-note{ font-size:10px; }
 }
 </style>
 </head>
@@ -180,7 +194,7 @@
 <header class="site-header">
     <nav class="main-nav">
         <div class="nav-left">
-            <a href="index.html" class="nav-logo">LUMI</a>
+            <a href="index.html" class="nav-logo"><img src="L.svg" alt="LUMI"></a>
             <ul>
                 <li><a href="Go_to_shopping.html">New In</a></li>
                 <li><a href="Go_to_shopping.html">Women</a></li>
@@ -217,7 +231,7 @@
 
         <form id="signin-fields" class="active">
             <h2>Welcome Back</h2>
-            <p class="sub">Sign in to your LUMI account.</p>
+            <p class="sub">Sign in to your <img src="L.svg" alt="LUMI" class="inline-logo"> account.</p>
             <input type="email" placeholder="Email Address" required>
             <input type="password" placeholder="Password" required>
             <button type="submit" class="btn-primary">Sign In</button>

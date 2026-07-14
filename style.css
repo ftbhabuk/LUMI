@@ -148,19 +148,19 @@ button{ font-family:inherit; cursor:pointer; }
 }
 
 .nav-logo{
-    font-family: var(--font-cursive);
-    font-weight:600;
-    font-style:italic;
-    font-size:20px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color: var(--gold);
-    transition:color 0.3s;
     flex-shrink:0;
     line-height:1;
+    display:flex;
+    align-items:center;
 }
-.nav-logo:hover{
-    color: var(--gold-bright);
+.nav-logo img{
+    display:block;
+    height:38px;
+    width:auto;
+    transition:opacity 0.3s;
+}
+.nav-logo:hover img{
+    opacity:0.8;
 }
 
 .nav-left ul{
@@ -642,9 +642,10 @@ button{ font-family:inherit; cursor:pointer; }
 }
 .content-image{
     width:100%;
-    aspect-ratio:4/5;
+    aspect-ratio:5/5;
     overflow:hidden;
     border:1px solid var(--border);
+    border-radius:8px;
 }
 .content-image img{
     width:100%;
@@ -844,16 +845,23 @@ button{ font-family:inherit; cursor:pointer; }
     background: var(--bg-section);
     text-align:left;
 }
-.reviews-section .section-title{
-    margin-bottom:4px;
-    text-align:left;
+.reviews-head{
+    max-width:1200px;
+    margin:0 auto 4px;
 }
-.reviews-subtitle{
-    font-size:11px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color: var(--text-muted);
-    margin-bottom:32px;
+.reviews-head .section-title{
+    margin-bottom:0;
+    text-align:left;
+    display:inline-block;
+    position:relative;
+}
+.reviews-head .section-title::after{
+    content:'';
+    display:block;
+    width:28px;
+    height:1px;
+    background:var(--gold);
+    margin:6px 0 0;
 }
 .reviews-scroll-wrap{
     position:relative;
@@ -1106,12 +1114,12 @@ footer{
     border-bottom:1px solid rgba(255,255,255,0.06);
 }
 .footer-brand .logo{
-    font-family: var(--font-display);
-    font-size:30px;
-    letter-spacing:8px;
-    text-transform:uppercase;
     margin-bottom:10px;
-    color: var(--text);
+}
+.footer-brand .logo img{
+    display:block;
+    height:80px;
+    width:auto;
 }
 .footer-brand .tagline{
     font-size:11px;
@@ -1254,7 +1262,7 @@ footer{
 @media (max-width: 560px){
     .main-nav{ padding:0 12px; gap:8px; height:48px; }
     .nav-left{ gap:10px; }
-    .nav-logo{ font-size:15px; letter-spacing:1px; }
+    .nav-logo img{ height:24px; }
     .nav-left ul{ gap:10px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
     .nav-left ul::-webkit-scrollbar{ display:none; }
     .nav-left a{
@@ -1358,6 +1366,13 @@ footer{
     .newsletter-form{ width:100%; }
     .newsletter-form input{ min-width:0; }
     .footer-bottom{ align-items:flex-start; flex-direction:column; }
+    .footer-brand .logo img{ height:28px; }
+    .footer-brand .tagline{ font-size:10px; letter-spacing:2px; margin-bottom:14px; }
+    .footer-brand p{ font-size:12px; max-width:100%; }
+    .footer-col h4{ font-size:10px; }
+    .footer-col ul li a{ font-size:12px; }
+    .footer-newsletter h4{ font-size:10px; }
+    .footer-newsletter p{ font-size:12px; }
 
     #lumi-toast{
         width:calc(100% - 32px);
@@ -1378,8 +1393,86 @@ footer{
     .checkout-form{ padding:24px 20px; }
 
     .filter-bar{ padding:20px 16px 0; gap:8px; overflow-x:auto; flex-wrap:nowrap; }
-    .filter-btn{ flex:0 0 auto; }
-    .search-modal{ width:calc(100% - 32px); margin:80px 16px; }
+    .filter-btn{ flex:0 0 auto; padding:6px 16px; font-size:10px; }
+
+    .utility-bar{ padding:0 16px; }
+    .utility-bar-inner{ gap:4px; font-size:9px; letter-spacing:1px; height:28px; }
+
+    .page-head{ padding:36px 16px 4px; }
+    .page-head h1{ font-size:28px; }
+
+    .cart-content{ padding:20px 16px; }
+    .cart-item-name{ font-size:13px; }
+    .cart-item-price{ font-size:11px; }
+    .cart-item-subtotal{ font-size:13px; min-width:50px; }
+    .cart-item-remove{ font-size:18px; padding:2px; }
+    .qty-btn{ width:26px; height:26px; font-size:14px; }
+    .qty-value{ font-size:13px; min-width:16px; }
+    .cart-total-label{ font-size:14px; }
+    .cart-total-price{ font-size:20px; }
+    .btn-checkout{ padding:14px; font-size:11px; }
+
+    .checkout-summary h2,
+    .checkout-form h2{ font-size:20px; }
+    .checkout-item{ font-size:13px; padding:8px 0; }
+    .checkout-total{ font-size:18px; padding:14px 0 0; }
+    .checkout-shipping{ font-size:13px; }
+    .checkout-payment-note{ font-size:11px; }
+    .btn-place-order{ padding:14px; font-size:11px; }
+
+    .checkout-success{ padding:50px 16px; }
+    .checkout-success-box{ padding:36px 20px; }
+    .checkout-success-box h2{ font-size:22px; }
+    .checkout-success-box p{ font-size:13px; }
+
+    #search-input{ padding:14px 16px; font-size:14px; }
+    .search-close-btn{ font-size:24px; padding:0 14px; }
+    .search-result-item{ padding:12px 16px; }
+    .search-result-name{ font-size:13px; }
+    .search-result-price{ font-size:13px; }
+    .search-empty{ padding:24px 16px; font-size:12px; }
+    .search-modal{ width:calc(100% - 32px); margin:60px 16px; }
+
+    .blog-head{ flex-direction:column; gap:8px; align-items:flex-start; }
+    .blog-title{ font-size:16px; }
+    .blog-excerpt{ font-size:12px; }
+    .blog-card{ width:250px; }
+
+    .review-card{ padding:20px 16px; width:260px; }
+    .review-phrase{ font-size:15px; }
+    .review-text{ font-size:12px; }
+    .review-author{ font-size:11px; }
+
+    .qa-question{ padding:16px 0; font-size:13px; }
+    .qa-answer{ font-size:12px; }
+    .qa-icon{ font-size:18px; }
+
+    .content-overline{ font-size:9px; }
+    .content-heading{ font-size:24px; }
+    .content-body{ font-size:13px; }
+    .content-cta{ font-size:10px; }
+
+    .quote-section{ padding:46px 16px; }
+    .quote-text{ font-size:20px; }
+    .quote-attribution{ font-size:10px; letter-spacing:2px; margin-bottom:0; }
+
+    .category-tile .cat-label{ font-size:11px; letter-spacing:2px; padding:10px 8px 0; }
+
+    .tab-grid .product-card .product-info .name-title{ font-size:12px; }
+    .tab-grid .product-card .product-info .name-sub{ font-size:9px; letter-spacing:0.5px; }
+
+    .product-info .type{ font-size:10px; }
+}
+
+/* Tablet portrait / small screens */
+@media (min-width: 561px) and (max-width: 768px){
+    .catalog-grid{ grid-template-columns:repeat(2, 1fr); gap:16px; padding:32px 24px 60px; }
+    .product-grid{ grid-template-columns:repeat(3, 1fr); gap:16px; }
+    .category-tiles-grid{ gap:14px; }
+    .footer-grid{ grid-template-columns:1fr 1fr; gap:28px; }
+    .hero-copy h1{ font-size:44px; }
+    .content-carousel-inner{ gap:40px; }
+    .content-heading{ font-size:28px; }
 }
 
 /* =========================================================
