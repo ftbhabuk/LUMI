@@ -440,30 +440,7 @@ button{ font-family:inherit; cursor:pointer; }
     transition:opacity 0.35s ease, transform 0.35s ease;
 }
 .tab-grid .product-card .wishlist-btn{
-    position:absolute;
-    top:10px;
-    right:10px;
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    background:rgba(22,22,22,0.85);
-    color: var(--text-soft);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:15px;
-    border:1px solid var(--border);
-    transition:all 0.25s;
-    z-index:2;
-    cursor:pointer;
-}
-.tab-grid .product-card .wishlist-btn:hover{
-    border-color: var(--gold);
-    color: var(--gold);
-}
-.tab-grid .product-card .wishlist-btn.wishlist-active{
-    color: #e74c3c;
-    border-color: #e74c3c;
+    display:none;
 }
 .tab-grid .product-card .product-info{
     padding:12px 4px 0;
@@ -475,6 +452,20 @@ button{ font-family:inherit; cursor:pointer; }
     font-size:13px;
     letter-spacing:0.5px;
     color: var(--text);
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+.tab-grid .product-card .product-info .name-title{
+    font-size:13px;
+    letter-spacing:0.5px;
+    color: var(--text);
+}
+.tab-grid .product-card .product-info .name-sub{
+    font-size:10px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color: var(--text-muted);
 }
 .tab-grid .product-card .product-info .wishlist-icon{
     font-size:15px;
@@ -484,6 +475,30 @@ button{ font-family:inherit; cursor:pointer; }
 }
 .tab-grid .product-card .product-info .wishlist-icon:hover{
     color: var(--gold);
+}
+.tab-grid .product-card .product-info .bookmark-btn{
+    background:none;
+    border:none;
+    color: var(--text-muted);
+    cursor:pointer;
+    padding:4px;
+    display:flex;
+    align-items:center;
+    transition:color 0.2s;
+    line-height:0;
+}
+.tab-grid .product-card .product-info .bookmark-btn:hover{
+    color: var(--gold);
+}
+.tab-grid .product-card .product-info .bookmark-btn.active{
+    color: var(--gold);
+}
+.tab-grid .product-card .product-info .bookmark-btn .bm-icon{
+    width:14px;
+    height:14px;
+}
+.tab-grid .product-card .product-info .bookmark-btn.active .bm-icon path{
+    fill:currentColor;
 }
 
 /* scroll arrows */
@@ -662,6 +677,18 @@ button{ font-family:inherit; cursor:pointer; }
     color: var(--text-soft);
     margin-bottom:28px;
 }
+.content-cta{
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color: var(--text);
+    padding-bottom:3px;
+    border-bottom:1px solid var(--gold);
+    transition:color 0.3s;
+}
+.content-cta:hover{
+    color: var(--gold);
+}
 
 /* ---------- Blog Section ---------- */
 .blog-section{
@@ -678,6 +705,16 @@ button{ font-family:inherit; cursor:pointer; }
 .blog-head .section-title{
     margin-bottom:0;
     text-align:left;
+    position:relative;
+    display:inline-block;
+}
+.blog-head .section-title::after{
+    content:'';
+    display:block;
+    width:28px;
+    height:1px;
+    background:var(--gold);
+    margin:6px 0 0;
 }
 .blog-scroll{
     display:flex;
@@ -707,6 +744,7 @@ button{ font-family:inherit; cursor:pointer; }
     height:100%;
     object-fit:cover;
     transition:transform 0.6s ease;
+    border-radius:6px;
 }
 .blog-card:hover .blog-image img{
     transform:scale(1.06);
@@ -935,7 +973,8 @@ button{ font-family:inherit; cursor:pointer; }
     transform:scale(1.06);
 }
 
-.wishlist-btn{
+.wishlist-btn,
+.bookmark-btn{
     position:absolute;
     top:10px;
     right:10px;
@@ -951,14 +990,20 @@ button{ font-family:inherit; cursor:pointer; }
     border:1px solid var(--border);
     transition:all 0.25s;
     z-index:2;
+    cursor:pointer;
 }
-.wishlist-btn:hover{
+.wishlist-btn:hover,
+.bookmark-btn:hover{
     border-color: var(--gold);
     color: var(--gold);
 }
-.wishlist-btn.wishlist-active{
+.wishlist-btn.wishlist-active,
+.bookmark-btn.active{
     color: #e74c3c;
     border-color: #e74c3c;
+}
+.bookmark-btn.active .bm-icon path{
+    fill:currentColor;
 }
 
 .add-cart-btn{
@@ -1266,7 +1311,8 @@ footer{
     .product-info .name,
     .product-info .price{ font-size:12px; }
 
-    .wishlist-btn{
+    .wishlist-btn,
+    .bookmark-btn{
         width:32px;
         height:32px;
         top:8px;

@@ -41,9 +41,10 @@
                 <input type="text" id="nav-search-input" placeholder="Search...">
             </div>
             <a href="loggine.html" title="Account" id="account-link">&#9679; <span class="account-name">Login</span></a>
-            <a href="#" title="Wishlist">&#9825;</a>
+            <a href="#" title="Wishlist"><svg class="bm-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></a>
             <a href="cart.html" title="Cart">
-                &#9827; <span class="cart-count">(<span id="cart-count">0</span>)</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span class="cart-count">(<span id="cart-count">0</span>)</span>
             </a>
         </div>
     </nav>
@@ -65,7 +66,7 @@
         <button class="tab-btn tab-active" data-tab="new-arrivals">New Arrivals</button>
         <button class="tab-btn" data-tab="best-sellers">Best Sellers</button>
     </div>
-    <div class="tab-shop-link"><a href="Go_to_shopping.html">Shop New Arrivals &#8594;</a></div>
+    <!-- <div class="tab-shop-link"><a href="Go_to_shopping.html">Shop New Arrivals &#8594;</a></div> -->
     <div class="tab-scroll-wrap">
         <button class="tab-scroll-arrow tab-scroll-arrow-left" id="tab-scroll-left">&#10094;</button>
         <button class="tab-scroll-arrow tab-scroll-arrow-right" id="tab-scroll-right">&#10095;</button>
@@ -73,133 +74,157 @@
 
             <div class="product-card" data-tab-group="new-arrivals">
                 <div class="product-photo">
-                    <img src="PHOTOS/l_dress.jpg" alt="LUMI Midi Dress">
-                    <button class="wishlist-btn" data-product="LUMI Midi Dress">&#9825;</button>
+                    <img src="PHOTOS/l_dress.jpg" alt="The Midi">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Midi Dress</div>
-                    <span class="wishlist-icon" data-product="LUMI Midi Dress">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Midi</span>
+                        <span class="name-sub">Women&rsquo;s Fit &amp; Flare Dress</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Midi"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="new-arrivals">
                 <div class="product-photo">
-                    <img src="PHOTOS/shoes.webp" alt="LUMI Penny Loafers">
-                    <button class="wishlist-btn" data-product="LUMI Penny Loafers">&#9825;</button>
+                    <img src="PHOTOS/shoes.webp" alt="The Penny">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Penny Loafers</div>
-                    <span class="wishlist-icon" data-product="LUMI Penny Loafers">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Penny</span>
+                        <span class="name-sub">Women&rsquo;s Leather Loafers</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Penny"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="new-arrivals">
                 <div class="product-photo">
-                    <img src="PHOTOS/jwelery.jpg" alt="LUMI Jewelry">
-                    <button class="wishlist-btn" data-product="LUMI Jewelry">&#9825;</button>
+                    <img src="PHOTOS/jwelery.jpg" alt="The Adorn">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Jewelry</div>
-                    <span class="wishlist-icon" data-product="LUMI Jewelry">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Adorn</span>
+                        <span class="name-sub">Women&rsquo;s Gold Jewelry Set</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Adorn"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="new-arrivals">
                 <div class="product-photo">
-                    <img src="PHOTOS/perfume.webp" alt="LUMI Pour Homme">
-                    <button class="wishlist-btn" data-product="LUMI Pour Homme">&#9825;</button>
+                    <img src="PHOTOS/perfume.webp" alt="The Essence">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Pour Homme</div>
-                    <span class="wishlist-icon" data-product="LUMI Pour Homme">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Essence</span>
+                        <span class="name-sub">Men&rsquo;s Eau de Parfum</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Essence"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="new-arrivals">
                 <div class="product-photo">
-                    <img src="PHOTOS/attar.webp" alt="LUMI Intense EDP">
-                    <button class="wishlist-btn" data-product="LUMI Intense EDP">&#9825;</button>
+                    <img src="PHOTOS/attar.webp" alt="The Noir">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Intense EDP</div>
-                    <span class="wishlist-icon" data-product="LUMI Intense EDP">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Noir</span>
+                        <span class="name-sub">Unisex Intense Fragrance</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Noir"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="new-arrivals">
                 <div class="product-photo">
-                    <img src="PHOTOS/watch.webp" alt="LUMI Watch">
-                    <button class="wishlist-btn" data-product="LUMI Watch">&#9825;</button>
+                    <img src="PHOTOS/watch.webp" alt="The Timer">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Watch</div>
-                    <span class="wishlist-icon" data-product="LUMI Watch">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Timer</span>
+                        <span class="name-sub">Unisex Leather Strap Watch</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Timer"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="best-sellers">
                 <div class="product-photo">
-                    <img src="PHOTOS/bag.webp" alt="LUMI Tote Bag">
-                    <button class="wishlist-btn" data-product="LUMI Tote Bag">&#9825;</button>
+                    <img src="PHOTOS/bag.webp" alt="The Carryall">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Tote Bag</div>
-                    <span class="wishlist-icon" data-product="LUMI Tote Bag">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Carryall</span>
+                        <span class="name-sub">Women&rsquo;s Canvas Tote</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Carryall"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="best-sellers">
                 <div class="product-photo">
-                    <img src="PHOTOS/attar.webp" alt="LUMI Eau de Parfum">
-                    <button class="wishlist-btn" data-product="LUMI Eau de Parfum">&#9825;</button>
+                    <img src="PHOTOS/attar.webp" alt="The Bloom">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Eau de Parfum</div>
-                    <span class="wishlist-icon" data-product="LUMI Eau de Parfum">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Bloom</span>
+                        <span class="name-sub">Women&rsquo;s Eau de Parfum</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Bloom"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="best-sellers">
                 <div class="product-photo">
-                    <img src="PHOTOS/belt.webp" alt="LUMI Leather Belt">
-                    <button class="wishlist-btn" data-product="LUMI Leather Belt">&#9825;</button>
+                    <img src="PHOTOS/belt.webp" alt="The Cinch">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Leather Belt</div>
-                    <span class="wishlist-icon" data-product="LUMI Leather Belt">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Cinch</span>
+                        <span class="name-sub">Men&rsquo;s Full-Grain Belt</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Cinch"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="best-sellers">
                 <div class="product-photo">
-                    <img src="PHOTOS/paint.webp" alt="LUMI Denim">
-                    <button class="wishlist-btn" data-product="LUMI Denim">&#9825;</button>
+                    <img src="PHOTOS/paint.webp" alt="The Stride">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Denim</div>
-                    <span class="wishlist-icon" data-product="LUMI Denim">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Stride</span>
+                        <span class="name-sub">Women&rsquo;s Slim Straight Jeans</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Stride"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="best-sellers">
                 <div class="product-photo">
-                    <img src="PHOTOS/sshoes.webp" alt="LUMI Heels">
-                    <button class="wishlist-btn" data-product="LUMI Heels">&#9825;</button>
+                    <img src="PHOTOS/sshoes.webp" alt="The Stiletto">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Heels</div>
-                    <span class="wishlist-icon" data-product="LUMI Heels">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Stiletto</span>
+                        <span class="name-sub">Women&rsquo;s Pointed Heels</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Stiletto"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
             <div class="product-card" data-tab-group="best-sellers">
                 <div class="product-photo">
-                    <img src="PHOTOS/glasss.webp" alt="LUMI Sunglasses">
-                    <button class="wishlist-btn" data-product="LUMI Sunglasses">&#9825;</button>
+                    <img src="PHOTOS/glasss.webp" alt="The Shield">
                 </div>
                 <div class="product-info">
-                    <div class="name">LUMI Sunglasses</div>
-                    <span class="wishlist-icon" data-product="LUMI Sunglasses">&#9825;</span>
+                    <div class="name">
+                        <span class="name-title">The Shield</span>
+                        <span class="name-sub">Unisex Aviator Sunglasses</span>
+                    </div>
+                    <button class="bookmark-btn" data-product="The Shield"><svg class="bm-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
                 </div>
             </div>
 
@@ -245,7 +270,7 @@
             <span class="content-overline">Designed for Life</span>
             <h2 class="content-heading">Crafted for Those Who Refuse to Compromise</h2>
             <p class="content-body">Every piece in the LUMI collection is selected for its quality, feel, and longevity. From Italian leather goods to hand-finished accessories, we believe what you wear should work as hard as you do.</p>
-            <a href="Go_to_shopping.html" class="btn-outline">Explore the Collection</a>
+            <a href="Go_to_shopping.html" class="content-cta">Explore the Collection</a>
         </div>
     </div>
 </section>

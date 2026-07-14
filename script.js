@@ -126,16 +126,14 @@ var LUMI = (function () {
   }
 
   function renderWishlistButtons() {
-    var selectors = document.querySelectorAll('.wishlist-btn, .wishlist-icon');
+    var selectors = document.querySelectorAll('.bookmark-btn');
     for (var i = 0; i < selectors.length; i++) {
       var el = selectors[i];
       var name = el.getAttribute('data-product');
       if (name && isWishlisted(name)) {
-        el.textContent = '\u2665';
-        el.classList.add('wishlist-active');
+        el.classList.add('active');
       } else if (name) {
-        el.textContent = '\u2661';
-        el.classList.remove('wishlist-active');
+        el.classList.remove('active');
       }
     }
   }
@@ -311,14 +309,14 @@ var LUMI = (function () {
   /* ---------- Init ---------- */
 
   function attachWishlistHandlers() {
-    var btns = document.querySelectorAll('.wishlist-btn, .wishlist-icon');
+    var btns = document.querySelectorAll('.bookmark-btn');
     for (var i = 0; i < btns.length; i++) {
       btns[i].addEventListener('click', function (e) {
         e.preventDefault();
         var name = this.getAttribute('data-product');
         if (name) {
           var added = toggleWishlist(name);
-          showToast(added ? name + ' added to wishlist' : name + ' removed from wishlist');
+          showToast(added ? name + ' saved' : name + ' removed');
         }
       });
     }
