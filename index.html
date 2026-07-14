@@ -16,17 +16,17 @@
     <div class="utility-bar">
         <div class="loc">📍 Worldwide&nbsp; | &nbsp;EN</div>
         <div class="utility-icons">
-            <a href="Go_to_shopping.html" title="Search">🔍</a>
+            <a href="#" title="Search" id="search-open">🔍</a>
             <a href="loggine.html" title="Account" id="account-link">👤 <span class="account-name">Login</span></a>
             <a href="#" title="Wishlist">♡</a>
-            <a href="Go_to_shopping.html" title="Cart">
+            <a href="cart.html" title="Cart">
                 🛍️ <span class="cart-count">(<span id="cart-count">0</span>)</span>
             </a>
         </div>
     </div>
 
     <div class="logo-row">
-        <a href="home.html" class="logo" href="home.html" class="logo">LUMI</a>
+        <a href="index.html" class="logo">LUMI</a>
     </div>
 
     <nav class="main-nav">
@@ -58,31 +58,29 @@
     <a class="tile" href="Go_to_shopping.html">
         <img src="PHOTOS/dress.webp" alt="Women's collection">
         <div class="tile-label">
-            <br>
-            
-            <h3></h3>
-            <a href="Go_to_shopping.html"></a>
+            <h3>Women's</h3>
+            <span>Shop Now</span>
         </div>
     </a>
     <a class="tile" href="Go_to_shopping.html">
         <img src="PHOTOS/sshoes.webp" alt="Men's collection">
         <div class="tile-label">
-            <h3></h3>
-            <a href="Go_to_shopping.html"></a>
+            <h3>Men's</h3>
+            <span>Shop Now</span>
         </div>
     </a>
     <a class="tile" href="Go_to_shopping.html">
         <img src="PHOTOS/bag.webp" alt="Bags collection">
         <div class="tile-label">
-            <h3></h3>
-            <a href="Go_to_shopping.html"></a>
+            <h3>Bags</h3>
+            <span>Shop Now</span>
         </div>
     </a>
     <a class="tile" href="Go_to_shopping.html">
         <img src="PHOTOS/attar.webp" alt="Perfume collection">
         <div class="tile-label">
-            <h3><br></h3>
-            <a href="Go_to_shopping.html"></a>
+            <h3>Perfume</h3>
+            <span>Shop Now</span>
         </div>
     </a>
 </section>
@@ -127,7 +125,7 @@
         <div class="product-card">
             <div class="product-photo">
                 <img src="PHOTOS/bag.webp" alt="LUMI Tote Bag">
-                <button class="wishlist-btn">♡</button>
+                <button class="wishlist-btn" data-product="LUMI Tote Bag">♡</button>
                 <button class="add-cart-btn" onclick="quickAdd('LUMI Tote Bag', 189)">Add to Cart</button>
             </div>
             <div class="product-info">
@@ -139,11 +137,11 @@
         <div class="product-card">
             <div class="product-photo">
                 <img src="PHOTOS/attar.webp" alt="LUMI Eau de Parfum Intense">
-                <button class="wishlist-btn">♡</button>
-                <button class="add-cart-btn" onclick="quickAdd('LUMI Eau de Parfume', 89)">Add to Cart</button>
+                <button class="wishlist-btn" data-product="LUMI Eau de Parfum">♡</button>
+                <button class="add-cart-btn" onclick="quickAdd('LUMI Eau de Parfum', 89)">Add to Cart</button>
             </div>
             <div class="product-info">
-                <div class="name">LUMI Eau de Parfume</div>
+                <div class="name">LUMI Eau de Parfum</div>
                 <div class="price">$89</div>
             </div>
         </div>
@@ -151,7 +149,7 @@
         <div class="product-card">
             <div class="product-photo">
                 <img src="PHOTOS/belt.webp" alt="LUMI Leather Belt">
-                <button class="wishlist-btn">♡</button>
+                <button class="wishlist-btn" data-product="LUMI Leather Belt">♡</button>
                 <button class="add-cart-btn" onclick="quickAdd('LUMI Leather Belt', 65)">Add to Cart</button>
             </div>
             <div class="product-info">
@@ -163,7 +161,7 @@
         <div class="product-card">
             <div class="product-photo">
                 <img src="PHOTOS/paint.webp" alt="LUMI Denim">
-                <button class="wishlist-btn">♡</button>
+                <button class="wishlist-btn" data-product="LUMI Denim">♡</button>
                 <button class="add-cart-btn" onclick="quickAdd('LUMI Denim', 98)">Add to Cart</button>
             </div>
             <div class="product-info">
@@ -175,7 +173,7 @@
         <div class="product-card">
             <div class="product-photo">
                 <img src="PHOTOS/sshoes.webp" alt="LUMI Heels">
-                <button class="wishlist-btn">♡</button>
+                <button class="wishlist-btn" data-product="LUMI Heels">♡</button>
                 <button class="add-cart-btn" onclick="quickAdd('LUMI Heels', 129)">Add to Cart</button>
             </div>
             <div class="product-info">
@@ -187,7 +185,7 @@
         <div class="product-card">
             <div class="product-photo">
                 <img src="PHOTOS/glasss.webp" alt="LUMI Sunglasses">
-                <button class="wishlist-btn">♡</button>
+                <button class="wishlist-btn" data-product="LUMI Sunglasses">♡</button>
                 <button class="add-cart-btn" onclick="quickAdd('LUMI Sunglasses', 79)">Add to Cart</button>
             </div>
             <div class="product-info">
@@ -199,7 +197,7 @@
         <div class="product-card">
             <div class="product-photo">
                 <img src="PHOTOS/watch.webp" alt="LUMI Watch">
-                <button class="wishlist-btn">♡</button>
+                <button class="wishlist-btn" data-product="LUMI Watch">♡</button>
                 <button class="add-cart-btn" onclick="quickAdd('LUMI Watch', 199)">Add to Cart</button>
             </div>
             <div class="product-info">
@@ -277,10 +275,10 @@
         <div class="footer-newsletter">
             <h4>Stay in the Loop</h4>
             <p>Sign up for early access to new drops and members-only offers.</p>
-            <div class="newsletter-form">
+            <form class="newsletter-form">
                 <input type="email" placeholder="Your email address">
-                <button type="button">Join</button>
-            </div>
+                <button type="submit">Join</button>
+            </form>
         </div>
     </div>
     <div class="footer-bottom">
@@ -293,6 +291,32 @@
     </div>
 </footer>
 
+<div id="search-overlay" class="search-overlay">
+    <div class="search-modal">
+        <div class="search-header">
+            <input type="text" id="search-input" placeholder="Search products..." autocomplete="off">
+            <button id="search-close" class="search-close-btn">&times;</button>
+        </div>
+        <div id="search-results" class="search-results"></div>
+    </div>
+</div>
+
 <script src="script.js"></script>
+<script>
+    LUMI.initSearch([
+        { name: 'LUMI Tote Bag', price: 189 },
+        { name: 'LUMI Eau de Parfum', price: 89 },
+        { name: 'LUMI Leather Belt', price: 65 },
+        { name: 'LUMI Denim', price: 98 },
+        { name: 'LUMI Heels', price: 129 },
+        { name: 'LUMI Sunglasses', price: 79 },
+        { name: 'LUMI Watch', price: 199 },
+        { name: 'LUMI Midi Dress', price: 159 },
+        { name: 'LUMI Penny Loafers', price: 139 },
+        { name: 'LUMI Jewelry', price: 79 },
+        { name: 'LUMI Pour Homme', price: 89 },
+        { name: 'LUMI Intense EDP', price: 95 }
+    ]);
+</script>
 </body>
 </html>

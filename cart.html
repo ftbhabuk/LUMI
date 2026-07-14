@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMI — Shopping Cart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="utility-bar">
+        <div class="loc">Worldwide | EN</div>
+        <div class="utility-icons">
+            <a href="#" title="Search" id="search-open">Search</a>
+            <a href="loggine.html" title="Account" id="account-link">👤 <span class="account-name">Login</span></a>
+            <a href="#" title="Wishlist">♡</a>
+            <a href="cart.html" title="Cart">
+                🛍️ <span class="cart-count">(<span id="cart-count">0</span>)</span>
+            </a>
+        </div>
+    </div>
+    <div class="logo-row">
+        <a href="index.html" class="logo">LUMI</a>
+    </div>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="Go_to_shopping.html">New In</a></li>
+            <li><a href="Go_to_shopping.html">Women</a></li>
+            <li><a href="Go_to_shopping.html">Men</a></li>
+            <li><a href="Go_to_shopping.html">Bags</a></li>
+            <li><a href="Go_to_shopping.html">Shoes</a></li>
+            <li><a href="Go_to_shopping.html">Accessories</a></li>
+            <li><a href="Go_to_shopping.html">Perfume</a></li>
+            <li><a href="Go_to_shopping.html" class="sale">Sale</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="page-head">
+    <h1>Shopping Cart</h1>
+</div>
+
+<section class="cart-page">
+    <div class="cart-content" id="cart-content">
+        <div class="cart-empty" id="cart-empty">
+            <p>Your cart is empty.</p>
+            <a href="Go_to_shopping.html" class="btn-outline-dark">Continue Shopping</a>
+        </div>
+        <div class="cart-items" id="cart-items" style="display:none;"></div>
+        <div class="cart-summary" id="cart-summary" style="display:none;">
+            <div class="cart-total-row">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-price" id="cart-total-price">$0</span>
+            </div>
+            <a href="checkout.html" class="btn-checkout">Proceed to Checkout</a>
+            <a href="Go_to_shopping.html" class="btn-continue">Continue Shopping</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="logo">LUMI</div>
+            <div class="tagline">Live in Style</div>
+            <p>Modern fashion and lifestyle essentials — designed for a generation that refuses to compromise on quality or style.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Shop</h4>
+            <ul>
+                <li><a href="Go_to_shopping.html">Women</a></li>
+                <li><a href="Go_to_shopping.html">Men</a></li>
+                <li><a href="Go_to_shopping.html">Bags</a></li>
+                <li><a href="Go_to_shopping.html">Perfume</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">About Lumi</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Help</h4>
+            <ul>
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Track Order</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <h4>Stay in the Loop</h4>
+            <p>Sign up for early access to new drops and members-only offers.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit">Join</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 LUMI. All rights reserved.</div>
+        <div class="socials">
+            <a href="#">IG</a>
+            <a href="#">TT</a>
+            <a href="#">FB</a>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+function renderCartPage() {
+    var cart = LUMI.getCart();
+    var itemsEl = document.getElementById('cart-items');
+    var summaryEl = document.getElementById('cart-summary');
+    var emptyEl = document.getElementById('cart-empty');
+    var totalEl = document.getElementById('cart-total-price');
+
+    if (cart.length === 0) {
+        itemsEl.style.display = 'none';
+        summaryEl.style.display = 'none';
+        emptyEl.style.display = '';
+        return;
+    }
+
+    emptyEl.style.display = 'none';
+    itemsEl.style.display = '';
+    summaryEl.style.display = '';
+
+    var html = '';
+    for (var i = 0; i < cart.length; i++) {
+        var item = cart[i];
+        var qty = item.qty || 1;
+        var subtotal = item.price * qty;
+        html += '<div class="cart-item">' +
+            '<div class="cart-item-info">' +
+                '<div class="cart-item-name">' + item.name + '</div>' +
+                '<div class="cart-item-price">$' + item.price + '</div>' +
+            '</div>' +
+            '<div class="cart-item-qty">' +
+                '<button class="qty-btn" onclick="LUMI.updateCartQuantity(' + i + ',' + (qty - 1) + ')">−</button>' +
+                '<span class="qty-value">' + qty + '</span>' +
+                '<button class="qty-btn" onclick="LUMI.updateCartQuantity(' + i + ',' + (qty + 1) + ')">+</button>' +
+            '</div>' +
+            '<div class="cart-item-subtotal">$' + subtotal + '</div>' +
+            '<button class="cart-item-remove" onclick="LUMI.removeFromCart(' + i + ')">&times;</button>' +
+        '</div>';
+    }
+    itemsEl.innerHTML = html;
+    totalEl.textContent = '$' + LUMI.getCartTotal();
+}
+
+LUMI.registerCartRenderer(renderCartPage);
+renderCartPage();
+</script>
+</body>
+</html>

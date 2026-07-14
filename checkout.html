@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMI — Checkout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="utility-bar">
+        <div class="loc">Worldwide | EN</div>
+        <div class="utility-icons">
+            <a href="#" title="Search" id="search-open">Search</a>
+            <a href="loggine.html" title="Account" id="account-link">👤 <span class="account-name">Login</span></a>
+            <a href="#" title="Wishlist">♡</a>
+            <a href="cart.html" title="Cart">
+                🛍️ <span class="cart-count">(<span id="cart-count">0</span>)</span>
+            </a>
+        </div>
+    </div>
+    <div class="logo-row">
+        <a href="index.html" class="logo">LUMI</a>
+    </div>
+</header>
+
+<div class="page-head">
+    <h1>Checkout</h1>
+</div>
+
+<section class="checkout-page" id="checkout-page">
+    <div class="checkout-layout">
+        <div class="checkout-summary">
+            <h2>Order Summary</h2>
+            <div id="checkout-items"></div>
+            <div class="checkout-total">
+                <span>Total</span>
+                <span id="checkout-total-price">$0</span>
+            </div>
+        </div>
+
+        <div class="checkout-form">
+            <h2>Shipping Information</h2>
+            <div id="checkout-shipping" class="checkout-shipping"></div>
+
+            <h2>Payment</h2>
+            <p class="checkout-payment-note">This is a demo — no real payment will be processed.</p>
+
+            <button class="btn-place-order" id="place-order-btn" onclick="placeOrder()">Place Order</button>
+        </div>
+    </div>
+</section>
+
+<section class="checkout-success" id="checkout-success" style="display:none;">
+    <div class="checkout-success-box">
+        <div class="checkout-success-icon">✓</div>
+        <h2>Order Placed!</h2>
+        <p>Thank you for your purchase. Your order has been placed successfully.</p>
+        <p>You will receive a confirmation email shortly.</p>
+        <a href="index.html" class="btn-outline-dark">Continue Shopping</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="logo">LUMI</div>
+            <div class="tagline">Live in Style</div>
+            <p>Modern fashion and lifestyle essentials — designed for a generation that refuses to compromise on quality or style.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Shop</h4>
+            <ul>
+                <li><a href="Go_to_shopping.html">Women</a></li>
+                <li><a href="Go_to_shopping.html">Men</a></li>
+                <li><a href="Go_to_shopping.html">Bags</a></li>
+                <li><a href="Go_to_shopping.html">Perfume</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">About Lumi</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Help</h4>
+            <ul>
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Track Order</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <h4>Stay in the Loop</h4>
+            <p>Sign up for early access to new drops and members-only offers.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit">Join</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 LUMI. All rights reserved.</div>
+        <div class="socials">
+            <a href="#">IG</a>
+            <a href="#">TT</a>
+            <a href="#">FB</a>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+function renderCheckout() {
+    if (!LUMI.isLoggedIn()) {
+        LUMI.goToLogin();
+        return;
+    }
+
+    var cart = LUMI.getCart();
+    if (cart.length === 0) {
+        window.location.href = 'cart.html';
+        return;
+    }
+
+    var itemsEl = document.getElementById('checkout-items');
+    var totalEl = document.getElementById('checkout-total-price');
+    var shippingEl = document.getElementById('checkout-shipping');
+
+    var html = '';
+    for (var i = 0; i < cart.length; i++) {
+        var item = cart[i];
+        var qty = item.qty || 1;
+        html += '<div class="checkout-item">' +
+            '<span>' + item.name + ' × ' + qty + '</span>' +
+            '<span>$' + (item.price * qty) + '</span>' +
+        '</div>';
+    }
+    itemsEl.innerHTML = html;
+    totalEl.textContent = '$' + LUMI.getCartTotal();
+
+    var user = LUMI.getUser();
+    if (user) {
+        shippingEl.innerHTML =
+            '<p><strong>' + user.name + '</strong></p>' +
+            '<p>' + user.address + '</p>' +
+            '<p>' + user.postalCode + '</p>' +
+            '<p>' + user.phone + '</p>' +
+            '<p>' + user.email + '</p>';
+    }
+}
+
+function placeOrder() {
+    localStorage.removeItem('lumiCart');
+    document.getElementById('checkout-page').style.display = 'none';
+    document.getElementById('checkout-success').style.display = '';
+    LUMI.renderCartCount();
+}
+
+renderCheckout();
+</script>
+</body>
+</html>

@@ -1,101 +1,358 @@
-// LUMI — shared site logic (login gate + cart), persisted via localStorage
+var LUMI = (function () {
 
-/* ---------- Auth ---------- */
+  /* ---------- Auth ---------- */
 
-function getUser() {
-    const raw = localStorage.getItem('lumiUser');
+  function getUser() {
+    var raw = localStorage.getItem('lumiUser');
     return raw ? JSON.parse(raw) : null;
-}
+  }
 
-function isLoggedIn() {
+  function isLoggedIn() {
     return localStorage.getItem('lumiLoggedIn') === 'true';
-}
+  }
 
-function logout() {
+  function logout() {
     localStorage.removeItem('lumiLoggedIn');
     localStorage.removeItem('lumiUser');
-    window.location.href = 'home.html';
-}
+    window.location.href = 'index.html';
+  }
 
-function currentPageName() {
-    const path = window.location.pathname.split('/').pop();
-    return path || 'home.html';
-}
+  function currentPageName() {
+    var path = window.location.pathname.split('/').pop();
+    return path || 'index.html';
+  }
 
-function goToLogin() {
+  function goToLogin() {
     window.location.href = 'loggine.html?redirect=' + encodeURIComponent(currentPageName());
-}
+  }
 
-/* ---------- Cart ---------- */
+  /* ---------- Cart (with quantity support) ---------- */
 
-function getCart() {
-    const raw = localStorage.getItem('lumiCart');
+  function getCart() {
+    var raw = localStorage.getItem('lumiCart');
     return raw ? JSON.parse(raw) : [];
-}
+  }
 
-function saveCart(cart) {
+  function saveCart(cart) {
     localStorage.setItem('lumiCart', JSON.stringify(cart));
     renderCartCount();
-}
+    renderCartPage && renderCartPage();
+  }
 
-// Called from "Add to Cart" / "Buy Now" buttons across the site.
-// Shoppers must be logged in before anything can be added.
-function quickAdd(name, price) {
-    if (!isLoggedIn()) {
-        showToast('Please log in to add items to your cart');
-        setTimeout(goToLogin, 700);
-        return;
+  function getCartCount() {
+    var cart = getCart();
+    var count = 0;
+    for (var i = 0; i < cart.length; i++) {
+      count += cart[i].qty || 1;
     }
-    const cart = getCart();
-    cart.push({ name: name, price: price });
+    return count;
+  }
+
+  function getCartTotal() {
+    var cart = getCart();
+    var total = 0;
+    for (var i = 0; i < cart.length; i++) {
+      total += cart[i].price * (cart[i].qty || 1);
+    }
+    return total;
+  }
+
+  function quickAdd(name, price) {
+    if (!isLoggedIn()) {
+      showToast('Please log in to add items to your cart');
+      setTimeout(goToLogin, 700);
+      return;
+    }
+    var cart = getCart();
+    var found = false;
+    for (var i = 0; i < cart.length; i++) {
+      if (cart[i].name === name) {
+        cart[i].qty = (cart[i].qty || 1) + 1;
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      cart.push({ name: name, price: price, qty: 1 });
+    }
     saveCart(cart);
     showToast(name + ' added to cart');
-}
+  }
 
-/* ---------- UI helpers ---------- */
+  function removeFromCart(index) {
+    var cart = getCart();
+    cart.splice(index, 1);
+    saveCart(cart);
+    renderCartPage && renderCartPage();
+  }
 
-function renderCartCount() {
-    const count = getCart().length;
-    document.querySelectorAll('#cart-count, .cart-count-value').forEach(function (el) {
-        el.textContent = count;
-    });
-}
-
-function renderAccountState() {
-    const el = document.getElementById('account-link');
-    if (!el) return;
-    const user = getUser();
-    if (isLoggedIn() && user) {
-        const firstName = (user.name || '').split(' ')[0] || 'Account';
-        el.innerHTML = '👤 <span class="account-name">Hi, ' + firstName + '</span>';
-        el.href = '#';
-        el.onclick = function (e) {
-            e.preventDefault();
-            if (confirm('Log out of LUMI?')) logout();
-        };
+  function updateCartQuantity(index, qty) {
+    var cart = getCart();
+    if (qty < 1) {
+      cart.splice(index, 1);
     } else {
-        el.innerHTML = '👤 <span class="account-name">Login</span>';
-        el.href = 'loggine.html?redirect=' + encodeURIComponent(currentPageName());
-        el.onclick = null;
+      cart[index].qty = qty;
     }
-}
+    saveCart(cart);
+    renderCartPage && renderCartPage();
+  }
 
-function showToast(message) {
-    let toast = document.getElementById('lumi-toast');
+  /* ---------- Wishlist ---------- */
+
+  function getWishlist() {
+    var raw = localStorage.getItem('lumiWishlist');
+    return raw ? JSON.parse(raw) : [];
+  }
+
+  function saveWishlist(list) {
+    localStorage.setItem('lumiWishlist', JSON.stringify(list));
+  }
+
+  function toggleWishlist(name) {
+    var list = getWishlist();
+    var idx = list.indexOf(name);
+    if (idx === -1) {
+      list.push(name);
+    } else {
+      list.splice(idx, 1);
+    }
+    saveWishlist(list);
+    renderWishlistButtons();
+    return idx === -1;
+  }
+
+  function isWishlisted(name) {
+    return getWishlist().indexOf(name) !== -1;
+  }
+
+  function renderWishlistButtons() {
+    var btns = document.querySelectorAll('.wishlist-btn');
+    for (var i = 0; i < btns.length; i++) {
+      var btn = btns[i];
+      var name = btn.getAttribute('data-product');
+      if (name && isWishlisted(name)) {
+        btn.textContent = '\u2665';
+        btn.classList.add('wishlist-active');
+      } else if (name) {
+        btn.textContent = '\u2661';
+        btn.classList.remove('wishlist-active');
+      }
+    }
+  }
+
+  /* ---------- Search overlay ---------- */
+
+  var searchData = [];
+
+  function initSearch(products) {
+    searchData = products || [];
+    var openBtn = document.getElementById('search-open');
+    var closeBtn = document.getElementById('search-close');
+    var overlay = document.getElementById('search-overlay');
+    var input = document.getElementById('search-input');
+    var results = document.getElementById('search-results');
+    if (!overlay) return;
+
+    if (openBtn) {
+      openBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        overlay.classList.add('search-visible');
+        document.body.classList.add('no-scroll');
+        if (input) { input.value = ''; input.focus(); }
+        if (results) results.innerHTML = '';
+      });
+    }
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        overlay.classList.remove('search-visible');
+        document.body.classList.remove('no-scroll');
+      });
+    }
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) {
+        overlay.classList.remove('search-visible');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+    if (input) {
+      input.addEventListener('input', function () {
+        var q = input.value.toLowerCase().trim();
+        if (!q || !results) { results.innerHTML = ''; return; }
+        var matches = [];
+        for (var i = 0; i < searchData.length; i++) {
+          if (searchData[i].name.toLowerCase().indexOf(q) !== -1) {
+            matches.push(searchData[i]);
+          }
+        }
+        if (matches.length === 0) {
+          results.innerHTML = '<div class="search-empty">No products found</div>';
+        } else {
+          var html = '';
+          for (var j = 0; j < matches.length; j++) {
+            html += '<a href="Go_to_shopping.html" class="search-result-item">' +
+              '<span class="search-result-name">' + matches[j].name + '</span>' +
+              '<span class="search-result-price">$' + matches[j].price + '</span>' +
+              '</a>';
+          }
+          results.innerHTML = html;
+        }
+      });
+    }
+  }
+
+  /* ---------- Product filtering (shop page) ---------- */
+
+  function initFilters() {
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    if (!filterBtns.length) return;
+    var cards = document.querySelectorAll('.catalog-grid .product-card');
+
+    for (var i = 0; i < filterBtns.length; i++) {
+      filterBtns[i].addEventListener('click', function () {
+        var cat = this.getAttribute('data-filter');
+
+        for (var j = 0; j < filterBtns.length; j++) {
+          filterBtns[j].classList.remove('filter-active');
+        }
+        this.classList.add('filter-active');
+
+        for (var k = 0; k < cards.length; k++) {
+          if (cat === 'all' || cards[k].getAttribute('data-category') === cat) {
+            cards[k].style.display = '';
+          } else {
+            cards[k].style.display = 'none';
+          }
+        }
+      });
+    }
+  }
+
+  /* ---------- Newsletter ---------- */
+
+  function initNewsletter() {
+    var forms = document.querySelectorAll('.newsletter-form');
+    for (var i = 0; i < forms.length; i++) {
+      forms[i].addEventListener('submit', function (e) {
+        e.preventDefault();
+        var input = this.querySelector('input');
+        if (input && input.value.trim()) {
+          showToast('Thanks for subscribing!');
+          input.value = '';
+        }
+      });
+    }
+  }
+
+  /* ---------- UI helpers ---------- */
+
+  function renderCartCount() {
+    var count = getCartCount();
+    var els = document.querySelectorAll('#cart-count');
+    for (var i = 0; i < els.length; i++) {
+      els[i].textContent = count;
+    }
+  }
+
+  function renderAccountState() {
+    var el = document.getElementById('account-link');
+    if (!el) return;
+    var user = getUser();
+    if (isLoggedIn() && user) {
+      var firstName = (user.name || '').split(' ')[0] || 'Account';
+      el.innerHTML = '\ud83d\udc64 <span class="account-name">Hi, ' + firstName + '</span>';
+      el.href = '#';
+      el.onclick = function (e) {
+        e.preventDefault();
+        if (confirm('Log out of LUMI?')) logout();
+      };
+    } else {
+      el.innerHTML = '\ud83d\udc64 <span class="account-name">Login</span>';
+      el.href = 'loggine.html?redirect=' + encodeURIComponent(currentPageName());
+      el.onclick = null;
+    }
+  }
+
+  var renderCartPage = null;
+
+  function registerCartRenderer(fn) {
+    renderCartPage = fn;
+  }
+
+  function showToast(message) {
+    var toast = document.getElementById('lumi-toast');
     if (!toast) {
-        toast = document.createElement('div');
-        toast.id = 'lumi-toast';
-        document.body.appendChild(toast);
+      toast = document.createElement('div');
+      toast.id = 'lumi-toast';
+      document.body.appendChild(toast);
     }
     toast.textContent = message;
-    toast.classList.add('show');
+    toast.className = 'show';
     clearTimeout(window._lumiToastTimer);
     window._lumiToastTimer = setTimeout(function () {
-        toast.classList.remove('show');
-    }, 2200);
-}
+      toast.className = '';
+    }, 2400);
+  }
 
-document.addEventListener('DOMContentLoaded', function () {
+  /* ---------- Init ---------- */
+
+  function attachWishlistHandlers() {
+    var btns = document.querySelectorAll('.wishlist-btn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function (e) {
+        e.preventDefault();
+        var name = this.getAttribute('data-product');
+        if (name) {
+          var added = toggleWishlist(name);
+          showToast(added ? name + ' added to wishlist' : name + ' removed from wishlist');
+        }
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
     renderCartCount();
     renderAccountState();
-});
+    renderWishlistButtons();
+    attachWishlistHandlers();
+    initNewsletter();
+    initFilters();
+
+    if (sessionStorage.getItem('lumiJustLoggedIn')) {
+      sessionStorage.removeItem('lumiJustLoggedIn');
+      var user = getUser();
+      if (user) {
+        showToast('Welcome, ' + user.name.split(' ')[0] + '!');
+      }
+    }
+  });
+
+  window.quickAdd = quickAdd;
+  window.showToast = showToast;
+  window.LUMI = LUMI;
+
+  return {
+    getUser: getUser,
+    isLoggedIn: isLoggedIn,
+    logout: logout,
+    currentPageName: currentPageName,
+    goToLogin: goToLogin,
+    getCart: getCart,
+    saveCart: saveCart,
+    getCartCount: getCartCount,
+    getCartTotal: getCartTotal,
+    quickAdd: quickAdd,
+    removeFromCart: removeFromCart,
+    updateCartQuantity: updateCartQuantity,
+    getWishlist: getWishlist,
+    toggleWishlist: toggleWishlist,
+    isWishlisted: isWishlisted,
+    renderWishlistButtons: renderWishlistButtons,
+    initSearch: initSearch,
+    initFilters: initFilters,
+    registerCartRenderer: registerCartRenderer,
+    showToast: showToast,
+    renderCartCount: renderCartCount,
+    renderAccountState: renderAccountState
+  };
+
+})();

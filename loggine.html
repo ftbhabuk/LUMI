@@ -13,7 +13,7 @@
 
 <header class="site-header">
     <div class="logo-row">
-        <a href="home.html" class="logo">LUMI</a>
+        <a href="index.html" class="logo">LUMI</a>
     </div>
 </header>
 
@@ -77,10 +77,11 @@
 
         localStorage.setItem('lumiUser', JSON.stringify(user));
         localStorage.setItem('lumiLoggedIn', 'true');
+        sessionStorage.setItem('lumiJustLoggedIn', 'true');
 
         const params = new URLSearchParams(window.location.search);
         const redirect = params.get('redirect');
-        window.location.href = redirect ? redirect : 'home.html';
+        window.location.href = redirect ? redirect : 'index.html';
     });
 </script>
 
