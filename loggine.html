@@ -8,30 +8,160 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+.login-page{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px 80px;
+    background: var(--bg-section);
+    min-height:85vh;
+}
+.login-box{
+    background: var(--surface);
+    width:100%;
+    max-width:400px;
+    padding:44px 36px;
+    border:1px solid var(--border);
+    animation: fadeInScale 0.5s ease;
+}
+.login-box .brand{
+    text-align:center;
+    margin-bottom:28px;
+}
+.login-box .brand .logo{
+    font-family: var(--font-display);
+    font-size:28px;
+    letter-spacing:8px;
+    text-transform:uppercase;
+    color: var(--text);
+}
+.login-box .brand .tagline{
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color: var(--gold);
+    margin-top:4px;
+}
+.login-box h2{
+    font-family: var(--font-display);
+    font-size:26px;
+    font-weight:600;
+    text-align:center;
+    margin-bottom:4px;
+    color: var(--text);
+}
+.login-box .sub{
+    text-align:center;
+    font-size:12px;
+    color: var(--text-soft);
+    margin-bottom:28px;
+}
+.login-box form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+.login-box .field-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+.login-box input,
+.login-box select{
+    padding:13px 14px;
+    border:1px solid var(--border);
+    font-size:13px;
+    font-family:inherit;
+    background: var(--bg-section);
+    color: var(--text);
+    transition:border-color 0.3s;
+    width:100%;
+}
+.login-box input:focus,
+.login-box select:focus{
+    outline:none;
+    border-color: var(--gold);
+}
+.login-box input::placeholder{
+    color: var(--text-muted);
+}
+.login-box button{
+    margin-top:6px;
+    padding:14px;
+    background: var(--gold);
+    color: var(--dark);
+    border:none;
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-weight:700;
+    transition:all 0.3s;
+    cursor:pointer;
+}
+.login-box button:hover{
+    background: var(--gold-bright);
+}
+.login-note{
+    text-align:center;
+    font-size:11px;
+    color: var(--text-muted);
+    margin-top:20px;
+    line-height:1.6;
+}
+@media (max-width: 560px){
+    .login-box{ padding:32px 20px; }
+    .login-box .field-row{ grid-template-columns:1fr; }
+}
+</style>
 </head>
 <body>
 
 <header class="site-header">
-    <div class="logo-row">
-        <a href="index.html" class="logo">LUMI</a>
-    </div>
+    <nav class="main-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">LUMI</a>
+            <ul>
+                <li><a href="Go_to_shopping.html">New In</a></li>
+                <li><a href="Go_to_shopping.html">Women</a></li>
+                <li><a href="Go_to_shopping.html">Men</a></li>
+                <li><a href="Go_to_shopping.html">Bags</a></li>
+                <li><a href="Go_to_shopping.html">Shoes</a></li>
+                <li><a href="Go_to_shopping.html">Accessories</a></li>
+                <li><a href="Go_to_shopping.html">Perfume</a></li>
+                <li><a href="Go_to_shopping.html" class="sale">Sale</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="nav-search">
+                <input type="text" id="nav-search-input" placeholder="Search...">
+            </div>
+            <a href="loggine.html" title="Account" id="account-link">&#9679; <span class="account-name">Login</span></a>
+            <a href="#" title="Wishlist">&#9825;</a>
+            <a href="cart.html" title="Cart">
+                &#9827; <span class="cart-count">(<span id="cart-count">0</span>)</span>
+            </a>
+        </div>
+    </nav>
 </header>
 
 <section class="login-page">
     <div class="login-box">
-        <div class="eyebrow">Welcome to Lumi</div>
-        <h2>Login / Register</h2>
-        <p class="sub" id="login-context">Sign in to shop and check out.</p>
+        <div class="brand">
+            <div class="logo">LUMI</div>
+            <div class="tagline">Live in Style</div>
+        </div>
+        <h2>Welcome</h2>
+        <p class="sub" id="login-context">Create your account to start shopping.</p>
 
         <form id="login-form">
             <input type="text" id="f-name" placeholder="Full Name" required>
-
             <input type="text" id="f-address" placeholder="Shipping Address" required>
 
             <div class="field-row">
                 <input type="text" id="f-postal" placeholder="Postal Code" required>
                 <select id="f-gender" required>
-                    <option value="">Select Gender</option>
+                    <option value="">Gender</option>
                     <option>Male</option>
                     <option>Female</option>
                     <option>Other</option>
@@ -42,7 +172,7 @@
             <input type="email" id="f-email" placeholder="Email Address" required>
             <input type="password" id="f-password" placeholder="Password" required>
 
-            <button type="submit">Login / Register</button>
+            <button type="submit">Create Account</button>
         </form>
 
         <p class="login-note">By continuing you agree to LUMI's Terms of Service and Privacy Policy.</p>
@@ -51,10 +181,9 @@
 
 <script src="script.js"></script>
 <script>
-    // Show shoppers why they've landed here, and where they'll return to.
     (function () {
-        const params = new URLSearchParams(window.location.search);
-        const redirect = params.get('redirect');
+        var params = new URLSearchParams(window.location.search);
+        var redirect = params.get('redirect');
         if (redirect) {
             document.getElementById('login-context').textContent =
                 'Please log in to continue — you\'ll be sent right back to shopping.';
@@ -64,23 +193,21 @@
     document.getElementById('login-form').addEventListener('submit', function (e) {
         e.preventDefault();
 
-        const user = {
+        var user = {
             name: document.getElementById('f-name').value.trim(),
             address: document.getElementById('f-address').value.trim(),
             postalCode: document.getElementById('f-postal').value.trim(),
             gender: document.getElementById('f-gender').value,
             phone: document.getElementById('f-phone').value.trim(),
             email: document.getElementById('f-email').value.trim()
-            // Note: for a real store, never store passwords client-side.
-            // This is a school-project prototype with no real backend.
         };
 
         localStorage.setItem('lumiUser', JSON.stringify(user));
         localStorage.setItem('lumiLoggedIn', 'true');
         sessionStorage.setItem('lumiJustLoggedIn', 'true');
 
-        const params = new URLSearchParams(window.location.search);
-        const redirect = params.get('redirect');
+        var params = new URLSearchParams(window.location.search);
+        var redirect = params.get('redirect');
         window.location.href = redirect ? redirect : 'index.html';
     });
 </script>

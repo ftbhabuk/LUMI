@@ -12,40 +12,36 @@
 <body>
 
 <header class="site-header">
-
-    <div class="utility-bar">
-        <div class="loc">📍 Worldwide&nbsp; | &nbsp;EN</div>
-        <div class="utility-icons">
-            <a href="#" title="Search" id="search-open">🔍</a>
-            <a href="loggine.html" title="Account" id="account-link">👤 <span class="account-name">Login</span></a>
-            <a href="#" title="Wishlist">♡</a>
+    <nav class="main-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">LUMI</a>
+            <ul>
+                <li><a href="Go_to_shopping.html">New In</a></li>
+                <li><a href="Go_to_shopping.html">Women</a></li>
+                <li><a href="Go_to_shopping.html">Men</a></li>
+                <li><a href="Go_to_shopping.html">Bags</a></li>
+                <li><a href="Go_to_shopping.html">Shoes</a></li>
+                <li><a href="Go_to_shopping.html">Accessories</a></li>
+                <li><a href="Go_to_shopping.html">Perfume</a></li>
+                <li><a href="Go_to_shopping.html" class="sale">Sale</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="nav-search">
+                <input type="text" id="nav-search-input" placeholder="Search...">
+            </div>
+            <a href="loggine.html" title="Account" id="account-link">&#9679; <span class="account-name">Login</span></a>
+            <a href="#" title="Wishlist">&#9825;</a>
             <a href="cart.html" title="Cart">
-                🛍️ <span class="cart-count">(<span id="cart-count">0</span>)</span>
+                &#9827; <span class="cart-count">(<span id="cart-count">0</span>)</span>
             </a>
         </div>
-    </div>
-
-    <div class="logo-row">
-        <a href="index.html" class="logo">LUMI</a>
-    </div>
-
-    <nav class="main-nav">
-        <ul>
-            <li><a href="Go_to_shopping.html">New In</a></li>
-            <li><a href="Go_to_shopping.html">Women</a></li>
-            <li><a href="Go_to_shopping.html">Men</a></li>
-            <li><a href="Go_to_shopping.html">Bags</a></li>
-            <li><a href="Go_to_shopping.html">Shoes</a></li>
-            <li><a href="Go_to_shopping.html">Accessories</a></li>
-            <li><a href="Go_to_shopping.html">Perfume</a></li>
-            <li><a href="Go_to_shopping.html" class="sale">Sale</a></li>
-        </ul>
     </nav>
-
 </header>
 
 <div class="catalog-head">
     <div class="eyebrow">Full Collection</div>
+    <div class="gold-line"></div>
     <h1>Shop All</h1>
 </div>
 
@@ -64,7 +60,7 @@
     <div class="product-card" data-category="bags">
         <div class="product-photo">
             <img src="PHOTOS/l_bag.jpg" alt="LUMI Tote Bag">
-            <button class="wishlist-btn" data-product="LUMI Tote Bag">♡</button>
+            <button class="wishlist-btn" data-product="LUMI Tote Bag">&#9825;</button>
             <button class="add-cart-btn" onclick="quickAdd('LUMI Tote Bag', 189)">Add to Cart</button>
         </div>
         <div class="product-info">
@@ -76,7 +72,7 @@
     <div class="product-card" data-category="women">
         <div class="product-photo">
             <img src="PHOTOS/l_dress.jpg" alt="LUMI Midi Dress">
-            <button class="wishlist-btn" data-product="LUMI Midi Dress">♡</button>
+            <button class="wishlist-btn" data-product="LUMI Midi Dress">&#9825;</button>
             <button class="add-cart-btn" onclick="quickAdd('LUMI Midi Dress', 159)">Add to Cart</button>
         </div>
         <div class="product-info">
@@ -88,7 +84,7 @@
     <div class="product-card" data-category="shoes">
         <div class="product-photo">
             <img src="PHOTOS/l_shoes.jpg" alt="LUMI Heels">
-            <button class="wishlist-btn" data-product="LUMI Heels">♡</button>
+            <button class="wishlist-btn" data-product="LUMI Heels">&#9825;</button>
             <button class="add-cart-btn" onclick="quickAdd('LUMI Heels', 129)">Add to Cart</button>
         </div>
         <div class="product-info">
@@ -100,7 +96,7 @@
     <div class="product-card" data-category="shoes">
         <div class="product-photo">
             <img src="PHOTOS/shoes.webp" alt="LUMI Penny Loafers">
-            <button class="wishlist-btn" data-product="LUMI Penny Loafers">♡</button>
+            <button class="wishlist-btn" data-product="LUMI Penny Loafers">&#9825;</button>
             <button class="add-cart-btn" onclick="quickAdd('LUMI Penny Loafers', 139)">Add to Cart</button>
         </div>
         <div class="product-info">
@@ -112,7 +108,7 @@
     <div class="product-card" data-category="women">
         <div class="product-photo">
             <img src="PHOTOS/paint.webp" alt="LUMI Denim">
-            <button class="wishlist-btn" data-product="LUMI Denim">♡</button>
+            <button class="wishlist-btn" data-product="LUMI Denim">&#9825;</button>
             <button class="add-cart-btn" onclick="quickAdd('LUMI Denim', 98)">Add to Cart</button>
         </div>
         <div class="product-info">
@@ -124,7 +120,7 @@
     <div class="product-card" data-category="accessories">
         <div class="product-photo">
             <img src="PHOTOS/belt.webp" alt="LUMI Leather Belt">
-            <button class="wishlist-btn" data-product="LUMI Leather Belt">♡</button>
+            <button class="wishlist-btn" data-product="LUMI Leather Belt">&#9825;</button>
             <button class="add-cart-btn" onclick="quickAdd('LUMI Leather Belt', 65)">Add to Cart</button>
         </div>
         <div class="product-info">
@@ -136,7 +132,7 @@
     <div class="product-card" data-category="accessories">
         <div class="product-photo">
             <img src="PHOTOS/jwelery.jpg" alt="LUMI Jewelry">
-            <button class="wishlist-btn" data-product="LUMI Jewelry">♡</button>
+            <button class="wishlist-btn" data-product="LUMI Jewelry">&#9825;</button>
             <button class="add-cart-btn" onclick="quickAdd('LUMI Jewelry', 79)">Add to Cart</button>
         </div>
         <div class="product-info">
@@ -148,7 +144,7 @@
     <div class="product-card" data-category="perfume">
         <div class="product-photo">
             <img src="PHOTOS/perfume.webp" alt="LUMI Pour Homme">
-            <button class="wishlist-btn" data-product="LUMI Pour Homme">♡</button>
+            <button class="wishlist-btn" data-product="LUMI Pour Homme">&#9825;</button>
             <button class="add-cart-btn" onclick="quickAdd('LUMI Pour Homme', 89)">Add to Cart</button>
         </div>
         <div class="product-info">
@@ -160,7 +156,7 @@
     <div class="product-card" data-category="perfume">
         <div class="product-photo">
             <img src="PHOTOS/attar.webp" alt="LUMI Intense Eau de Parfum">
-            <button class="wishlist-btn" data-product="LUMI Intense EDP">♡</button>
+            <button class="wishlist-btn" data-product="LUMI Intense EDP">&#9825;</button>
             <button class="add-cart-btn" onclick="quickAdd('LUMI Intense EDP', 95)">Add to Cart</button>
         </div>
         <div class="product-info">
@@ -173,28 +169,28 @@
 
 <section class="trust-bar">
     <div class="trust-item">
-        <div class="icon">🚚</div>
+        <div class="icon">&#9992;</div>
         <div>
             <div class="t-title">Free Shipping</div>
             <div class="t-sub">On all orders over $75</div>
         </div>
     </div>
     <div class="trust-item">
-        <div class="icon">↺</div>
+        <div class="icon">&#8634;</div>
         <div>
             <div class="t-title">Easy Returns</div>
             <div class="t-sub">30 days return policy</div>
         </div>
     </div>
     <div class="trust-item">
-        <div class="icon">🔒</div>
+        <div class="icon">&#128274;</div>
         <div>
             <div class="t-title">Secure Payment</div>
             <div class="t-sub">100% secure checkout</div>
         </div>
     </div>
     <div class="trust-item">
-        <div class="icon">🎧</div>
+        <div class="icon">&#127926;</div>
         <div>
             <div class="t-title">Customer Care</div>
             <div class="t-sub">We're here to help</div>
@@ -229,7 +225,7 @@
         <div class="footer-col">
             <h4>Help</h4>
             <ul>
-                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Shipping &amp; Returns</a></li>
                 <li><a href="#">Track Order</a></li>
                 <li><a href="#">Contact Us</a></li>
             </ul>
@@ -244,11 +240,11 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <div>© 2026 LUMI. All rights reserved.</div>
+        <div>&copy; 2026 LUMI. All rights reserved.</div>
         <div class="socials">
-            <a href="#">IG</a>
-            <a href="#">TT</a>
-            <a href="#">FB</a>
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">Facebook</a>
         </div>
     </div>
 </footer>

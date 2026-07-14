@@ -12,31 +12,30 @@
 <body>
 
 <header class="site-header">
-    <div class="utility-bar">
-        <div class="loc">Worldwide | EN</div>
-        <div class="utility-icons">
-            <a href="#" title="Search" id="search-open">Search</a>
-            <a href="loggine.html" title="Account" id="account-link">👤 <span class="account-name">Login</span></a>
-            <a href="#" title="Wishlist">♡</a>
+    <nav class="main-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">LUMI</a>
+            <ul>
+                <li><a href="Go_to_shopping.html">New In</a></li>
+                <li><a href="Go_to_shopping.html">Women</a></li>
+                <li><a href="Go_to_shopping.html">Men</a></li>
+                <li><a href="Go_to_shopping.html">Bags</a></li>
+                <li><a href="Go_to_shopping.html">Shoes</a></li>
+                <li><a href="Go_to_shopping.html">Accessories</a></li>
+                <li><a href="Go_to_shopping.html">Perfume</a></li>
+                <li><a href="Go_to_shopping.html" class="sale">Sale</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="nav-search">
+                <input type="text" id="nav-search-input" placeholder="Search...">
+            </div>
+            <a href="loggine.html" title="Account" id="account-link">&#9679; <span class="account-name">Login</span></a>
+            <a href="#" title="Wishlist">&#9825;</a>
             <a href="cart.html" title="Cart">
-                🛍️ <span class="cart-count">(<span id="cart-count">0</span>)</span>
+                &#9827; <span class="cart-count">(<span id="cart-count">0</span>)</span>
             </a>
         </div>
-    </div>
-    <div class="logo-row">
-        <a href="index.html" class="logo">LUMI</a>
-    </div>
-    <nav class="main-nav">
-        <ul>
-            <li><a href="Go_to_shopping.html">New In</a></li>
-            <li><a href="Go_to_shopping.html">Women</a></li>
-            <li><a href="Go_to_shopping.html">Men</a></li>
-            <li><a href="Go_to_shopping.html">Bags</a></li>
-            <li><a href="Go_to_shopping.html">Shoes</a></li>
-            <li><a href="Go_to_shopping.html">Accessories</a></li>
-            <li><a href="Go_to_shopping.html">Perfume</a></li>
-            <li><a href="Go_to_shopping.html" class="sale">Sale</a></li>
-        </ul>
     </nav>
 </header>
 
@@ -89,7 +88,7 @@
         <div class="footer-col">
             <h4>Help</h4>
             <ul>
-                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Shipping &amp; Returns</a></li>
                 <li><a href="#">Track Order</a></li>
                 <li><a href="#">Contact Us</a></li>
             </ul>
@@ -104,11 +103,11 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <div>© 2026 LUMI. All rights reserved.</div>
+        <div>&copy; 2026 LUMI. All rights reserved.</div>
         <div class="socials">
-            <a href="#">IG</a>
-            <a href="#">TT</a>
-            <a href="#">FB</a>
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">Facebook</a>
         </div>
     </div>
 </footer>
@@ -144,7 +143,7 @@ function renderCartPage() {
                 '<div class="cart-item-price">$' + item.price + '</div>' +
             '</div>' +
             '<div class="cart-item-qty">' +
-                '<button class="qty-btn" onclick="LUMI.updateCartQuantity(' + i + ',' + (qty - 1) + ')">−</button>' +
+                '<button class="qty-btn" onclick="LUMI.updateCartQuantity(' + i + ',' + (qty - 1) + ')">\u2212</button>' +
                 '<span class="qty-value">' + qty + '</span>' +
                 '<button class="qty-btn" onclick="LUMI.updateCartQuantity(' + i + ',' + (qty + 1) + ')">+</button>' +
             '</div>' +

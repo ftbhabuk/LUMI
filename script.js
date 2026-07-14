@@ -144,6 +144,17 @@ var LUMI = (function () {
 
   var searchData = [];
 
+  function openSearchOverlay() {
+    var overlay = document.getElementById('search-overlay');
+    var input = document.getElementById('search-input');
+    var results = document.getElementById('search-results');
+    if (!overlay) return;
+    overlay.classList.add('search-visible');
+    document.body.classList.add('no-scroll');
+    if (input) { input.value = ''; input.focus(); }
+    if (results) results.innerHTML = '';
+  }
+
   function initSearch(products) {
     searchData = products || [];
     var openBtn = document.getElementById('search-open');
@@ -151,15 +162,19 @@ var LUMI = (function () {
     var overlay = document.getElementById('search-overlay');
     var input = document.getElementById('search-input');
     var results = document.getElementById('search-results');
+    var navSearch = document.getElementById('nav-search-input');
     if (!overlay) return;
 
     if (openBtn) {
       openBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        overlay.classList.add('search-visible');
-        document.body.classList.add('no-scroll');
-        if (input) { input.value = ''; input.focus(); }
-        if (results) results.innerHTML = '';
+        openSearchOverlay();
+      });
+    }
+    if (navSearch) {
+      navSearch.addEventListener('focus', function (e) {
+        e.target.blur();
+        openSearchOverlay();
       });
     }
     if (closeBtn) {
@@ -259,14 +274,14 @@ var LUMI = (function () {
     var user = getUser();
     if (isLoggedIn() && user) {
       var firstName = (user.name || '').split(' ')[0] || 'Account';
-      el.innerHTML = '\ud83d\udc64 <span class="account-name">Hi, ' + firstName + '</span>';
+      el.innerHTML = '\u25cf <span class="account-name">Hi, ' + firstName + '</span>';
       el.href = '#';
       el.onclick = function (e) {
         e.preventDefault();
         if (confirm('Log out of LUMI?')) logout();
       };
     } else {
-      el.innerHTML = '\ud83d\udc64 <span class="account-name">Login</span>';
+      el.innerHTML = '\u25cf <span class="account-name">Login</span>';
       el.href = 'loggine.html?redirect=' + encodeURIComponent(currentPageName());
       el.onclick = null;
     }
@@ -309,6 +324,28 @@ var LUMI = (function () {
     }
   }
 
+  function initReveal() {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            entries[i].target.classList.add('visible');
+            obs.unobserve(entries[i].target);
+          }
+        }
+      }, { threshold: 0.15 });
+      for (var j = 0; j < els.length; j++) {
+        obs.observe(els[j]);
+      }
+    } else {
+      for (var k = 0; k < els.length; k++) {
+        els[k].classList.add('visible');
+      }
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     renderCartCount();
     renderAccountState();
@@ -316,6 +353,7 @@ var LUMI = (function () {
     attachWishlistHandlers();
     initNewsletter();
     initFilters();
+    initReveal();
 
     if (sessionStorage.getItem('lumiJustLoggedIn')) {
       sessionStorage.removeItem('lumiJustLoggedIn');
