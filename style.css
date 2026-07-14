@@ -571,6 +571,30 @@ button{ font-family:inherit; cursor:pointer; }
     color: var(--gold);
 }
 
+/* ---------- Quote ---------- */
+.quote-section{
+    padding:80px 48px;
+    text-align:center;
+}
+.quote-text{
+    font-family: var(--font-cursive);
+    font-style:italic;
+    font-weight:500;
+    font-size:28px;
+    line-height:1.5;
+    color: var(--gold);
+    max-width:700px;
+    margin:0 auto 10px;
+    letter-spacing:0.5px;
+}
+.quote-attribution{
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color: var(--text-muted);
+    margin-bottom:40px;
+}
+
 /* ---------- Content Carousel ---------- */
 .content-carousel{
     padding:80px 48px;
@@ -1130,6 +1154,7 @@ footer{
     .tab-scroll-arrow{ display:none; }
     .content-carousel-inner{ gap:36px; }
     .content-heading{ font-size:28px; }
+    .quote-text{ font-size:22px; }
     .category-tiles-grid{ grid-template-columns:repeat(3,1fr); gap:16px; }
     .category-tiles{ padding:40px 24px 50px; }
     .product-grid{ grid-template-columns:repeat(3, 1fr); row-gap:34px; }
@@ -1186,6 +1211,8 @@ footer{
     .content-image{ aspect-ratio:4/3; }
     .content-text{ max-width:100%; }
     .content-heading{ font-size:26px; }
+    .quote-section{ padding:46px 16px; }
+    .quote-text{ font-size:20px; }
     .blog-section{ padding:46px 16px; }
     .blog-card{ width:260px; }
     .qa-section{ padding:46px 16px 56px; }
