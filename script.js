@@ -406,12 +406,26 @@ var LUMI = (function () {
     var wrap = document.getElementById('showcase-products');
     if (!leftBtn || !rightBtn || !wrap) return;
 
+    function updateArrows() {
+      if (wrap.scrollLeft > 10) {
+        leftBtn.classList.add('visible');
+      } else {
+        leftBtn.classList.remove('visible');
+      }
+    }
+
+    updateArrows();
+
     leftBtn.addEventListener('click', function () {
       wrap.scrollBy({ left: -220, behavior: 'smooth' });
+      setTimeout(updateArrows, 100);
     });
     rightBtn.addEventListener('click', function () {
       wrap.scrollBy({ left: 220, behavior: 'smooth' });
+      setTimeout(updateArrows, 100);
     });
+
+    wrap.addEventListener('scroll', updateArrows);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
