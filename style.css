@@ -574,11 +574,21 @@ body.mobile-menu-open .mobile-menu-panel{
 }
 
 @media (max-width: 860px) {
-    .hero-media { height: 62vh; }
+    .hero-media { height: 50vh; }
     .hero-spine { width: 32px; padding-bottom: 24px; }
-    .hero-eyebrow-tag { left: 48px; }
+    .hero-eyebrow-tag { left: 0; }
     .hero-editorial { padding: 32px 20px 0; flex-direction: column; align-items: flex-start; }
-    .hero-headline { font-size: clamp(36px, 12vw, 64px); max-width: 100%; }
+    .hero-headline { font-size: clamp(36px, 12vw, 64px); max-width: 100%; margin-left: 12px; }
+    .hero-cta-block { align-self: flex-end; align-items: flex-end; text-align: right; }
+    .hero-dek { text-align: right; }
+}
+
+@media (max-width: 480px) {
+    .hero-media { height: 42vh; }
+    .hero-headline { font-size: clamp(28px, 10vw, 40px); margin-left: 12px; }
+    .hero-editorial { padding: 20px 16px 0; }
+    .hero-dek { font-size: 15px; }
+    .hero-cta-block { align-self: flex-end; align-items: flex-end; text-align: right; }
 }
 
 /* ---------- Collection tabs ---------- */

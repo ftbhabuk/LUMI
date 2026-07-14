@@ -33,3 +33,7 @@ Open `index.html` in any browser. All assets are local except Google Fonts and U
 - Vanilla JavaScript (DOM, inline search)
 - [Unsplash](https://unsplash.com) for product and editorial photography
 - [Google Fonts](https://fonts.google.com) — Playfair Display & Cormorant Garamond
+
+## Alt work
+
+Side experiments and alternative layouts. Shoutout to the homie :)
