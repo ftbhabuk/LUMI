@@ -400,34 +400,6 @@ var LUMI = (function () {
     });
   }
 
-  function initShowcaseArrows() {
-    var leftBtn = document.getElementById('showcase-scroll-left');
-    var rightBtn = document.getElementById('showcase-scroll-right');
-    var wrap = document.getElementById('showcase-products');
-    if (!leftBtn || !rightBtn || !wrap) return;
-
-    function updateArrows() {
-      if (wrap.scrollLeft > 10) {
-        leftBtn.classList.add('visible');
-      } else {
-        leftBtn.classList.remove('visible');
-      }
-    }
-
-    updateArrows();
-
-    leftBtn.addEventListener('click', function () {
-      wrap.scrollBy({ left: -220, behavior: 'smooth' });
-      setTimeout(updateArrows, 100);
-    });
-    rightBtn.addEventListener('click', function () {
-      wrap.scrollBy({ left: 220, behavior: 'smooth' });
-      setTimeout(updateArrows, 100);
-    });
-
-    wrap.addEventListener('scroll', updateArrows);
-  }
-
   document.addEventListener('DOMContentLoaded', function () {
     renderCartCount();
     renderAccountState();
@@ -438,7 +410,6 @@ var LUMI = (function () {
     initReveal();
     initTabs();
     initScrollArrows();
-    initShowcaseArrows();
 
     if (sessionStorage.getItem('lumiJustLoggedIn')) {
       sessionStorage.removeItem('lumiJustLoggedIn');
