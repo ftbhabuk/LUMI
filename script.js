@@ -171,16 +171,73 @@ var LUMI = (function () {
       });
     }
     if (navSearch) {
-      navSearch.addEventListener('focus', function (e) {
-        e.target.blur();
-        openSearchOverlay();
+      var searchWrap = navSearch.closest('.nav-search');
+      var dropdown = document.createElement('div');
+      dropdown.className = 'search-dropdown';
+      searchWrap.appendChild(dropdown);
+      navSearch.addEventListener('input', function () {
+        var q = navSearch.value.toLowerCase().trim();
+        if (!q) { dropdown.innerHTML = ''; dropdown.classList.remove('active'); return; }
+        var matches = [];
+        for (var i = 0; i < searchData.length; i++) {
+          if (searchData[i].name.toLowerCase().indexOf(q) !== -1) {
+            matches.push(searchData[i]);
+          }
+        }
+        if (matches.length === 0) {
+          dropdown.innerHTML = '<div class="search-dropdown-empty">No products found</div>';
+        } else {
+          var html = '';
+          for (var j = 0; j < matches.length; j++) {
+            html += '<a href="Go_to_shopping.html" class="search-dropdown-item">' +
+              '<span class="search-dropdown-name">' + matches[j].name + '</span>' +
+              '<span class="search-dropdown-price">$' + matches[j].price + '</span>' +
+              '</a>';
+          }
+          dropdown.innerHTML = html;
+        }
+        dropdown.classList.add('active');
+      });
+      navSearch.addEventListener('blur', function () {
+        setTimeout(function () { dropdown.classList.remove('active'); }, 200);
+      });
+      navSearch.addEventListener('focus', function () {
+        if (navSearch.value.trim()) { dropdown.classList.add('active'); }
       });
     }
     if (mobileSearch) {
-      mobileSearch.addEventListener('focus', function (e) {
-        e.target.blur();
-        openSearchOverlay();
-        document.body.classList.remove('mobile-menu-open');
+      var mobileWrap = mobileSearch.closest('.mobile-search-wrap');
+      var mobileDropdown = document.createElement('div');
+      mobileDropdown.className = 'search-dropdown';
+      mobileWrap.appendChild(mobileDropdown);
+      mobileSearch.addEventListener('input', function () {
+        var q = mobileSearch.value.toLowerCase().trim();
+        if (!q) { mobileDropdown.innerHTML = ''; mobileDropdown.classList.remove('active'); return; }
+        var matches = [];
+        for (var i = 0; i < searchData.length; i++) {
+          if (searchData[i].name.toLowerCase().indexOf(q) !== -1) {
+            matches.push(searchData[i]);
+          }
+        }
+        if (matches.length === 0) {
+          mobileDropdown.innerHTML = '<div class="search-dropdown-empty">No products found</div>';
+        } else {
+          var html = '';
+          for (var j = 0; j < matches.length; j++) {
+            html += '<a href="Go_to_shopping.html" class="search-dropdown-item">' +
+              '<span class="search-dropdown-name">' + matches[j].name + '</span>' +
+              '<span class="search-dropdown-price">$' + matches[j].price + '</span>' +
+              '</a>';
+          }
+          mobileDropdown.innerHTML = html;
+        }
+        mobileDropdown.classList.add('active');
+      });
+      mobileSearch.addEventListener('blur', function () {
+        setTimeout(function () { mobileDropdown.classList.remove('active'); }, 200);
+      });
+      mobileSearch.addEventListener('focus', function () {
+        if (mobileSearch.value.trim()) { mobileDropdown.classList.add('active'); }
       });
     }
     if (closeBtn) {
@@ -500,4 +557,21 @@ var LUMI = (function () {
     renderAccountState: renderAccountState
   };
 
+})();
+
+/* ---------- Showcase scroll ---------- */
+(function () {
+    const track = document.getElementById('showcase-track');
+    const btnLeft = document.getElementById('showcase-scroll-left');
+    const btnRight = document.getElementById('showcase-scroll-right');
+    if (!track || !btnLeft || !btnRight) return;
+
+    const scrollAmount = () => track.clientWidth * 0.8;
+
+    btnLeft.addEventListener('click', () => {
+        track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    });
+    btnRight.addEventListener('click', () => {
+        track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+    });
 })();
