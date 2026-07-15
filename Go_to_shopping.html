@@ -18,12 +18,12 @@
             <a href="index.html" class="nav-logo"><img src="L.svg" alt="LUMI"></a>
             <ul>
                 <li><a href="Go_to_shopping.html">New In</a></li>
-                <li><a href="Go_to_shopping.html">Women</a></li>
-                <li><a href="Go_to_shopping.html">Men</a></li>
-                <li><a href="Go_to_shopping.html">Bags</a></li>
-                <li><a href="Go_to_shopping.html">Shoes</a></li>
-                <li><a href="Go_to_shopping.html">Accessories</a></li>
-                <li><a href="Go_to_shopping.html">Perfume</a></li>
+                <li><a href="Go_to_shopping.html?filter=women">Women</a></li>
+                <li><a href="Go_to_shopping.html?filter=men">Men</a></li>
+                <li><a href="Go_to_shopping.html?filter=bags">Bags</a></li>
+                <li><a href="Go_to_shopping.html?filter=shoes">Shoes</a></li>
+                <li><a href="Go_to_shopping.html?filter=accessories">Accessories</a></li>
+                <li><a href="Go_to_shopping.html?filter=perfume">Perfume</a></li>
                 <li><a href="Go_to_shopping.html" class="sale">Sale</a></li>
             </ul>
         </div>
@@ -47,12 +47,12 @@
             </div>
             <ul class="mobile-menu-links">
                 <li><a href="Go_to_shopping.html">New In</a></li>
-                <li><a href="Go_to_shopping.html">Women</a></li>
-                <li><a href="Go_to_shopping.html">Men</a></li>
-                <li><a href="Go_to_shopping.html">Bags</a></li>
-                <li><a href="Go_to_shopping.html">Shoes</a></li>
-                <li><a href="Go_to_shopping.html">Accessories</a></li>
-                <li><a href="Go_to_shopping.html">Perfume</a></li>
+                <li><a href="Go_to_shopping.html?filter=women">Women</a></li>
+                <li><a href="Go_to_shopping.html?filter=men">Men</a></li>
+                <li><a href="Go_to_shopping.html?filter=bags">Bags</a></li>
+                <li><a href="Go_to_shopping.html?filter=shoes">Shoes</a></li>
+                <li><a href="Go_to_shopping.html?filter=accessories">Accessories</a></li>
+                <li><a href="Go_to_shopping.html?filter=perfume">Perfume</a></li>
                 <li><a href="Go_to_shopping.html" class="sale">Sale</a></li>
             </ul>
             <a href="login.html" class="mobile-account-link">&#9679; Account</a>
@@ -464,6 +464,32 @@
         { name: 'LUMI Silk Scarf', price: 75 },
         { name: 'LUMI Oud EDP', price: 109 }
     ]);
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var toggle = document.getElementById('nav-toggle');
+        var close = document.getElementById('mobile-close');
+        var menu = document.getElementById('mobile-menu');
+        if (!toggle || !menu) return;
+        toggle.addEventListener('click', function () {
+            document.body.classList.add('mobile-menu-open');
+        });
+        if (close) {
+            close.addEventListener('click', function () {
+                document.body.classList.remove('mobile-menu-open');
+            });
+        }
+        menu.addEventListener('click', function (e) {
+            if (e.target === menu) {
+                document.body.classList.remove('mobile-menu-open');
+            }
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                document.body.classList.remove('mobile-menu-open');
+            }
+        });
+    });
 </script>
 </body>
 </html>

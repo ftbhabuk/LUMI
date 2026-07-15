@@ -285,22 +285,32 @@ var LUMI = (function () {
     if (!filterBtns.length) return;
     var cards = document.querySelectorAll('.catalog-grid .product-card');
 
+    function applyFilter(cat) {
+      for (var j = 0; j < filterBtns.length; j++) {
+        filterBtns[j].classList.remove('filter-active');
+        if (filterBtns[j].getAttribute('data-filter') === cat) {
+          filterBtns[j].classList.add('filter-active');
+        }
+      }
+      for (var k = 0; k < cards.length; k++) {
+        if (cat === 'all' || cards[k].getAttribute('data-category') === cat) {
+          cards[k].style.display = '';
+        } else {
+          cards[k].style.display = 'none';
+        }
+      }
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var urlFilter = params.get('filter');
+    if (urlFilter) {
+      applyFilter(urlFilter);
+    }
+
     for (var i = 0; i < filterBtns.length; i++) {
       filterBtns[i].addEventListener('click', function () {
         var cat = this.getAttribute('data-filter');
-
-        for (var j = 0; j < filterBtns.length; j++) {
-          filterBtns[j].classList.remove('filter-active');
-        }
-        this.classList.add('filter-active');
-
-        for (var k = 0; k < cards.length; k++) {
-          if (cat === 'all' || cards[k].getAttribute('data-category') === cat) {
-            cards[k].style.display = '';
-          } else {
-            cards[k].style.display = 'none';
-          }
-        }
+        applyFilter(cat);
       });
     }
   }
