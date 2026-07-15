@@ -345,7 +345,7 @@ var LUMI = (function () {
       };
     } else {
       el.innerHTML = '\u25cf <span class="account-name">Login</span>';
-      el.href = 'loggine.html?redirect=' + encodeURIComponent(currentPageName());
+      el.href = 'login.html?redirect=' + encodeURIComponent(currentPageName());
       el.onclick = null;
     }
   }
