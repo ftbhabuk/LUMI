@@ -490,6 +490,14 @@
             }
         });
     });
+
+    /* Mobile: tap product photo to show/hide Add to Cart */
+    document.querySelectorAll('.product-photo').forEach(function(photo) {
+        photo.addEventListener('click', function(e) {
+            if (e.target.closest('.add-cart-btn')) return;
+            this.classList.toggle('tapped');
+        });
+    });
 </script>
 </body>
 </html>

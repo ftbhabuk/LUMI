@@ -1550,17 +1550,18 @@ footer{
 
     .wishlist-btn,
     .bookmark-btn{
-        width:40px;
-        height:40px;
-        top:6px;
-        right:6px;
+        display:none;
     }
     .add-cart-btn{
-        opacity:1;
-        transform:none;
+        opacity:0;
+        transform:translateY(8px);
         padding:14px 8px;
         font-size:11px;
         letter-spacing:1.5px;
+    }
+    .product-photo.tapped .add-cart-btn{
+        opacity:1;
+        transform:translateY(0);
     }
 
     .catalog-hero{
